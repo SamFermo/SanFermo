@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>San Fermo | Neighborhood Italian on Ballard Avenue</title>
+  <meta name="description" content="Family owned neighborhood Italian restaurant on Ballard Avenue in Seattle. Regional Italian with locally sourced ingredients from Pacific Northwest farms, ranches, and fisheries.">
+  <meta name="keywords" content="San Fermo, Seattle restaurant, Italian restaurant, Ballard, farm to table, Swan House Farm">
+  <meta property="og:title" content="San Fermo | Neighborhood Italian on Ballard Avenue">
+  <meta property="og:description" content="Family owned neighborhood Italian in Seattle's Ballard neighborhood. Regional Italian with locally sourced Pacific Northwest ingredients.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sanfermoseattle.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #F5F0E8;
+      --warm-white: #FEFCF8;
+      --olive: #5C6B4F;
+      --olive-dark: #3D4A33;
+      --olive-light: #7A8B6A;
+      --terra: #B8703F;
+      --terra-light: #D4956A;
+      --charcoal: #2C2C2C;
+      --warm-gray: #6B6560;
+      --warm-gray-light: #9B9590;
+      --linen: #EDE8DF;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--charcoal);
+      background: var(--warm-white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(254, 252, 248, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--charcoal);
+    }
+
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    .nav-logo span {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--warm-white);
+      transition: color 0.4s ease;
+    }
+
+    nav.scrolled .nav-logo span {
+      color: var(--charcoal);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(255,255,255,0.9);
+      transition: color 0.3s ease;
+    }
+
+    nav.scrolled .nav-links a {
+      color: var(--warm-gray);
+    }
+
+    .nav-links a:hover {
+      color: var(--terra);
+    }
+
+    .nav-cta {
+      font-size: 0.75rem !important;
+      letter-spacing: 0.12em !important;
+      padding: 0.6rem 1.4rem;
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: 2px;
+      transition: all 0.3s ease !important;
+    }
+
+    nav.scrolled .nav-cta {
+      border-color: var(--olive);
+      color: var(--olive) !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--olive) !important;
+      border-color: var(--olive) !important;
+      color: white !important;
+    }
+
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--warm-white);
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled .nav-toggle span {
+      background: var(--charcoal);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 8vh;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://static.wixstatic.com/media/bd2c68_ebb0ae2a2eab4e9cae4a11d52748d1cf~mv2.jpg/v1/fill/w_1920,h_1080,al_c,q_85,enc_avif,quality_auto/bd2c68_ebb0ae2a2eab4e9cae4a11d52748d1cf~mv2.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.1) 0%,
+        rgba(0,0,0,0.15) 50%,
+        rgba(0,0,0,0.55) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      max-width: 700px;
+      padding: 0 2rem;
+    }
+
+    .hero-content h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-content p {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .hero-content .hero-hours {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      letter-spacing: 0.08em;
+      text-transform: none;
+    }
+
+    /* ── SECTION DEFAULTS ── */
+    section {
+      padding: 6rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--olive);
+      margin-bottom: 1rem;
+    }
+
+    .section-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── INTRO STRIP ── */
+    .intro {
+      background: var(--olive-dark);
+      padding: 3.5rem 2rem;
+      text-align: center;
+    }
+
+    .intro p {
+      font-family: var(--font-serif);
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-weight: 300;
+      color: var(--cream);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── ABOUT / STORY ── */
+    .about {
+      background: var(--warm-white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-text p {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--warm-gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* ── MENU ── */
+    .menu {
+      background: var(--cream);
+    }
+
+    .menu-intro {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .menu-intro p {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--warm-gray);
+      line-height: 1.7;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem 5rem;
+    }
+
+    .menu-category h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .menu-item {
+      margin-bottom: 1.25rem;
+    }
+
+    .menu-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.25rem;
+    }
+
+    .menu-item-name {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--charcoal);
+    }
+
+    .menu-item-price {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: var(--warm-gray-light);
+      white-space: nowrap;
+      margin-left: 1rem;
+    }
+
+    .menu-item-desc {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--warm-gray-light);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .menu-note {
+      text-align: center;
+      margin-top: 3rem;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      color: var(--warm-gray-light);
+      font-style: italic;
+    }
+
+    /* ── FARM & EVENTS ── */
+    .farm {
+      position: relative;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .farm-hero {
+      position: relative;
+      height: 60vh;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .farm-hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://static.wixstatic.com/media/bd2c68_68f4851dfd654bcf9a241fb9ee80cd82~mv2.png/v1/fill/w_1920,h_1080,al_c,q_90,enc_avif,quality_auto/bd2c68_68f4851dfd654bcf9a241fb9ee80cd82~mv2.png');
+      background-size: cover;
+      background-position: center 30%;
+    }
+
+    .farm-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.2) 0%,
+        rgba(0,0,0,0.4) 100%
+      );
+    }
+
+    .farm-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      max-width: 650px;
+      padding: 0 2rem;
+    }
+
+    .farm-hero-content .section-label {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .farm-hero-content h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .farm-hero-content p {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.75;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .farm-details {
+      background: var(--olive-dark);
+      padding: 4rem 2rem;
+    }
+
+    .farm-details-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      text-align: center;
+    }
+
+    .farm-detail {
+      padding: 1rem;
+    }
+
+    .farm-detail h4 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+    }
+
+    .farm-detail p {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(245, 240, 232, 0.7);
+      line-height: 1.7;
+    }
+
+    /* ── RESERVATIONS ── */
+    .reservations {
+      background: var(--warm-white);
+      text-align: center;
+    }
+
+    .reservations .section-inner {
+      max-width: 600px;
+    }
+
+    .reservations p {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--warm-gray);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2.5rem;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--olive);
+      color: white;
+      border: 1px solid var(--olive);
+    }
+
+    .btn-primary:hover {
+      background: var(--olive-dark);
+      border-color: var(--olive-dark);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--charcoal);
+      border-color: white;
+    }
+
+    .reservations-extras {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2.5rem;
+    }
+
+    .reservations-extras a {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      color: var(--warm-gray-light);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .reservations-extras a:hover {
+      color: var(--terra);
+      border-bottom-color: var(--terra);
+    }
+
+    /* ── FAQ ── */
+    .faq {
+      background: var(--cream);
+    }
+
+    .faq .section-inner {
+      max-width: 750px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 1.5rem 0;
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .faq-question {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: 0;
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-family: var(--font-sans);
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: var(--warm-gray-light);
+      margin-left: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.open .faq-question::after {
+      content: '\2212';
+    }
+
+    .faq-answer {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--warm-gray);
+      line-height: 1.75;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding-top: 0;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding-top: 1rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.6);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand h3 {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col p,
+    .footer-col a {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      display: block;
+    }
+
+    .footer-col a:hover {
+      color: var(--terra-light);
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    .footer-social a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease;
+    }
+
+    .footer-social a:hover {
+      color: var(--terra-light);
+    }
+
+    /* ── NEWSLETTER ── */
+    .newsletter {
+      background: var(--linen);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .newsletter h3 {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .newsletter p {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: var(--warm-gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 420px;
+      margin: 0 auto;
+      gap: 0;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 0.85rem 1rem;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-right: none;
+      border-radius: 2px 0 0 2px;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      background: white;
+      outline: none;
+    }
+
+    .newsletter-form input:focus {
+      border-color: var(--olive);
+    }
+
+    .newsletter-form button {
+      padding: 0.85rem 1.5rem;
+      background: var(--olive);
+      color: white;
+      border: 1px solid var(--olive);
+      border-radius: 0 2px 2px 0;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .newsletter-form button:hover {
+      background: var(--olive-dark);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(254, 252, 248, 0.98);
+        backdrop-filter: blur(20px);
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        z-index: 200;
+      }
+      .nav-links.open a {
+        color: var(--charcoal);
+        font-size: 1rem;
+      }
+      .nav-toggle { display: block; z-index: 300; }
+
+      section { padding: 4rem 1.5rem; }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .about-image { aspect-ratio: 3/2; }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .farm-details-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .reservations-extras {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">
+      <img src="https://static.wixstatic.com/media/bd2c68_01bb0d7d9c3245fa9bdc93811f790f49~mv2.png/v1/crop/x_0,y_592,w_3300,h_1326/fill/w_323,h_130,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/San%20Fermo%20Logos-04.png" alt="San Fermo">
+      <span>San Fermo</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#farm">The Farm</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" class="nav-cta">Reserve a Table</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Neighborhood Italian on Ballard Avenue</h1>
+      <p>Seattle, Washington</p>
+      <span class="hero-hours">Dinner nightly at 5 PM &ensp;|&ensp; Reservations & walk-ins welcome</span>
+    </div>
+  </section>
+
+  <!-- INTRO STRIP -->
+  <div class="intro">
+    <p>Family owned and operated since 2016. Regional Italian with locally sourced ingredients from Pacific Northwest farms, ranches, and fisheries.</p>
+  </div>
+
+  <!-- ABOUT / STORY -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-image fade-in">
+          <img src="https://static.wixstatic.com/media/bd2c68_b76041a648334519b410e37698326c5b~mv2.jpg/v1/fill/w_800,h_1000,al_c,q_85,enc_avif,quality_auto/bd2c68_b76041a648334519b410e37698326c5b~mv2.jpg" alt="Inside San Fermo">
+        </div>
+        <div class="about-text fade-in">
+          <span class="section-label">Our Story</span>
+          <h2 class="section-heading">A family table on Ballard Avenue</h2>
+          <p>San Fermo started with a simple idea: cook honest food from great ingredients and share it with the neighborhood. Since 2016, we've been doing exactly that from our spot on Ballard Avenue.</p>
+          <p>Our kitchen draws on the regional traditions of northern Italy, but the ingredients come from close to home. We work directly with Pacific Northwest farms, ranches, and fisheries, many of which we've partnered with since day one. The menu changes with the seasons because our sourcing does too.</p>
+          <p>We farm 34 acres of our own at Swan House Farm in the Skagit Valley, where we raise animals, tend orchards, and grow produce that finds its way to your plate. The connection between the farm and the restaurant is at the heart of everything we do.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu" id="menu">
+    <div class="section-inner">
+      <div class="menu-intro fade-in">
+        <span class="section-label">The Menu</span>
+        <h2 class="section-heading">What we're cooking</h2>
+        <p>We offer a small menu that changes daily. The chef requests that you put your whole order in at once. Below is a sample of recent offerings.</p>
+      </div>
+      <div class="menu-grid fade-in">
+        <div class="menu-category">
+          <h3>Antipasti</h3>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">House Made Focaccia</span>
+              <span class="menu-item-price">10</span>
+            </div>
+            <p class="menu-item-desc">balsamic, olive oil</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Sea Wolf Bakery Baguette</span>
+              <span class="menu-item-price">8</span>
+            </div>
+            <p class="menu-item-desc">les pr&eacute;s sal&eacute;s butter, sea salt</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Castelvetrano Olives</span>
+              <span class="menu-item-price">6</span>
+            </div>
+            <p class="menu-item-desc">fennel pollen, citrus, rosemary</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Marcona Almonds</span>
+              <span class="menu-item-price">6</span>
+            </div>
+            <p class="menu-item-desc">fried rosemary, sea salt</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Farinata</span>
+              <span class="menu-item-price">13</span>
+            </div>
+            <p class="menu-item-desc">chickpea flatbread, house cogliata, swan house preserves, sea salt</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">House Caesar</span>
+              <span class="menu-item-price">14</span>
+            </div>
+            <p class="menu-item-desc">anchovy, parmigiano reggiano, red wine croutons</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Endive Salad</span>
+              <span class="menu-item-price">17</span>
+            </div>
+            <p class="menu-item-desc">smoked trout, fris&eacute;e, oregano vinaigrette, marcona almonds</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Burrata</span>
+              <span class="menu-item-price">16</span>
+            </div>
+            <p class="menu-item-desc">radicchio, red bell pepper, balsamic vinegar, mint, crostini</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Bruschetta</span>
+              <span class="menu-item-price">18</span>
+            </div>
+            <p class="menu-item-desc">speck, poached pear, gorgonzola dolce, walnuts, miners lettuce, saba</p>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h3>Primi &amp; Secondi</h3>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Saffron Spaghetti Bolognese</span>
+              <span class="menu-item-price">30</span>
+            </div>
+            <p class="menu-item-desc">pork, veal, rosemary, fennel, tomato, parmigiano reggiano</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Agnolotti del Plin</span>
+              <span class="menu-item-price">29</span>
+            </div>
+            <p class="menu-item-desc">lemon ricotta, preserved meyer lemon, nettle pesto, pistachio</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Paccheri</span>
+              <span class="menu-item-price">28</span>
+            </div>
+            <p class="menu-item-desc">creamy vodka sauce, red onion, olio d'oliva, burrata, basil</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Bucatini Carbonara</span>
+              <span class="menu-item-price">28</span>
+            </div>
+            <p class="menu-item-desc">swan house egg yolk, guanciale, black pepper, pecorino romano</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Risotto Funghi</span>
+              <span class="menu-item-price">29</span>
+            </div>
+            <p class="menu-item-desc">marinated realtake mushrooms, marjoram, goat cheese, garlic</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Sea Scallops</span>
+              <span class="menu-item-price">41</span>
+            </div>
+            <p class="menu-item-desc">polenta, tomato concasse, basil, duck fat</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Filet Mignon</span>
+              <span class="menu-item-price">51</span>
+            </div>
+            <p class="menu-item-desc">confit fingerling potatoes, garlic aioli, horseradish gremolata</p>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h3>Cocktails</h3>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">The Cure for the Long Dark</span>
+              <span class="menu-item-price">16</span>
+            </div>
+            <p class="menu-item-desc">dark rum, allspice dram, oloroso sherry, orange juice, lemon, nutmeg, cynar</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">A Midnight Dream</span>
+              <span class="menu-item-price">16</span>
+            </div>
+            <p class="menu-item-desc">uncle val's botanical gin, blueberry and yuzu maceration, lavanda, gran classico, lemon, basil</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">The Feral Gull</span>
+              <span class="menu-item-price">17</span>
+            </div>
+            <p class="menu-item-desc">mezcal, tepernol, amaro ciociaro, brucato "woodlands" amaro, lemon</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">San Fermo Negroni</span>
+              <span class="menu-item-price">17</span>
+            </div>
+            <p class="menu-item-desc">gin, campari,americano bianco, vermouth, grapefruit expression</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Evil Endeavors</span>
+              <span class="menu-item-price">18</span>
+            </div>
+            <p class="menu-item-desc">earl grey infused buffalo trace bourbon, tawny port, g&eacute;n&eacute;py des alps, orange bitters</p>
+          </div>
+          <div class="menu-item" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.06);">
+            <div class="menu-item-header">
+              <span class="menu-item-name" style="font-style: italic; font-weight: 400;">Beer, NA &amp; Wine</span>
+            </div>
+            <p class="menu-item-desc">Peroni, Fremont Lush IPA, house mocktails, NA options, and a curated Italian wine list featuring selections from Piedmont, Tuscany, Alto Adige, and beyond.</p>
+          </div>
+        </div>
+        <div class="menu-category">
+          <h3>Dolci</h3>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Earl Grey Tiramisu</span>
+              <span class="menu-item-price">15</span>
+            </div>
+            <p class="menu-item-desc">mascarpone, ladyfingers, miso tea, dark rum, bergamot sabayone</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Carrot Cake</span>
+              <span class="menu-item-price">14</span>
+            </div>
+            <p class="menu-item-desc">ginger cream, cheese zabaione, carrot pur&eacute;e, walnut dukkah</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Seasonal Gelato</span>
+              <span class="menu-item-price">8</span>
+            </div>
+            <p class="menu-item-desc">rotating seasonal flavors</p>
+          </div>
+        </div>
+      </div>
+      <p class="menu-note">Menu changes daily. We charge a 23% service charge on dine-in and 10% on to-go in lieu of traditional gratuity. 100% of this fee goes to the house.</p>
+    </div>
+  </section>
+
+  <!-- FARM & EVENTS -->
+  <section class="farm" id="farm">
+    <div class="farm-hero">
+      <div class="farm-hero-bg"></div>
+      <div class="farm-hero-overlay"></div>
+      <div class="farm-hero-content fade-in">
+        <span class="section-label">Swan House Farm</span>
+        <h2>From our fields to your table</h2>
+        <p>34 acres in the Skagit Valley with market gardens, orchards, sheep, hogs, cattle, and poultry. The farm is the backbone of our kitchen and the future of what San Fermo is becoming.</p>
+        <a href="https://www.swanhousefarm.com" target="_blank" class="btn btn-outline">Visit the Farm</a>
+      </div>
+    </div>
+    <div class="farm-details">
+      <div class="farm-details-grid fade-in">
+        <div class="farm-detail">
+          <h4>Farm Dinners</h4>
+          <p>Multi-course meals served outdoors on the farm during summer. A family affair with long tables, open fire, and ingredients picked that day.</p>
+        </div>
+        <div class="farm-detail">
+          <h4>Private Events</h4>
+          <p>The farm is available for intimate gatherings, celebrations, and corporate retreats. Reach out to discuss what we can put together for you.</p>
+        </div>
+        <div class="farm-detail">
+          <h4>What We Grow</h4>
+          <p>Seasonal vegetables, stone fruit, apples, herbs, and flowers. Our animals are raised on pasture and processed on-site or at local facilities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVATIONS -->
+  <section class="reservations" id="reservations">
+    <div class="section-inner fade-in">
+      <span class="section-label">Join Us</span>
+      <h2 class="section-heading">Reserve your table</h2>
+      <p>We offer online reservations through OpenTable for parties up to five. Larger groups of up to ten can be accommodated on weeknight early seatings. Walk-ins are always welcome.</p>
+      <a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" class="btn btn-primary">Book on OpenTable</a>
+      <div class="reservations-extras">
+        <a href="https://direct.chownow.com/order/22475/locations/32679" target="_blank">Order To-Go</a>
+        <a href="mailto:info@sanfermoseattle.com">Group Inquiries</a>
+        <a href="mailto:info@sanfermoseattle.com">Gift Cards</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="section-inner">
+      <div style="text-align:center; margin-bottom: 3rem;" class="fade-in">
+        <span class="section-label">Good to Know</span>
+        <h2 class="section-heading">Frequently asked questions</h2>
+      </div>
+      <div class="fade-in">
+        <div class="faq-item">
+          <button class="faq-question">Service charge</button>
+          <div class="faq-answer">We've replaced traditional tipping with a 23% service charge on dine-in orders and 10% on to-go. This supports fair wages across the entire team. Unlike tips, service charge is subject to Washington State sales tax.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Seating &amp; reservations</button>
+          <div class="faq-answer">We have three indoor dining rooms and several heated tables on our deck. Requests for specific areas can be made but are not guaranteed. Reservations book the table for two hours. Our last seating is 9 PM weeknights and 9:30 PM Friday and Saturday.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Dining with children</button>
+          <div class="faq-answer">We are very family friendly. Please indicate if you need a high chair and be sure to include all members of your party when booking so we can plan the right table.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Dogs</button>
+          <div class="faq-answer">We have two tables on our front porch and during summer four additional sidewalk cafe tables that can accommodate pets. These tables cannot be reserved, so there may be a wait if you plan to bring your pooch.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">To-go ordering</button>
+          <div class="faq-answer">Our to-go menu goes live nightly at 4 PM. Follow the Order To-Go link to place your order through ChowNow.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Outside food &amp; wine</button>
+          <div class="faq-answer">All food and beverage must be ordered from our menu and wine list. We don't have a corkage policy or a cake fee.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter">
+    <h3>Stay in the loop</h3>
+    <p>News from the restaurant and farm, seasonal menus, and event announcements.</p>
+    <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thanks!'; this.querySelector('input').value='';">
+      <input type="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>San Fermo</h3>
+        <p>Neighborhood Italian on Ballard Avenue.<br>Family owned since 2016.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <p>5341 Ballard Ave NW</p>
+        <p>Seattle, WA 98107</p>
+        <p style="margin-top: 0.5rem;">Dinner nightly at 5 PM</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:2063421530">(206) 342-1530</a>
+        <a href="mailto:info@sanfermoseattle.com">info@sanfermoseattle.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 San Fermo</span>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/sanfermoseattle" target="_blank">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll-aware nav
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile nav toggle
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => links.classList.remove('open'));
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
