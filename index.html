@@ -951,7 +951,7 @@
         <h2 class="section-heading">What we're cooking</h2>
         <p>We offer a small menu that changes daily. The chef requests that you put your whole order in at once. Below is a sample of recent offerings.</p>
       </div>
-      <div class="menu-grid fade-in">
+      <div class="menu-grid fade-in" id="menuGrid">
         <div class="menu-category">
           <h3>Antipasti</h3>
           <div class="menu-item">
@@ -1298,6 +1298,84 @@
     }, { threshold: 0.15 });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+  <!-- ── LIVE MENU ──────────────────────────────────────────────────────────────
+       Reads the snapshot a manager publishes from the staff portal (Fresh Talk →
+       "Publish menu to website") out of Firestore menu-public/current.
+
+       The menu baked into the HTML above is the fallback, and it is a real one:
+       if Firestore is down, the rules change, the CDN is blocked, or the guest is
+       offline, the page renders exactly as it does today. The script only ever
+       REPLACES good content with newer good content — it never blanks the grid.
+       Added 2026-08-02. ───────────────────────────────────────────────────────── -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+  <script>
+  (function(){
+    // Prices are intentionally off the public menu. Flip to true to show them —
+    // the published snapshot already carries them, so no re-publish is needed.
+    var SHOW_PRICES = false;
+
+    var CFG = {
+      apiKey: "AIzaSyByAhPS7C86jXG-8y9EQGNbMwncmBPl9oc",
+      authDomain: "sf-staff-portal.firebaseapp.com",
+      projectId: "sf-staff-portal",
+      storageBucket: "sf-staff-portal.firebasestorage.app",
+      messagingSenderId: "395019590035",
+      appId: "1:395019590035:web:d7fcccb093b09b9cb67066"
+    };
+
+    function esc(s){
+      return String(s == null ? '' : s)
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function render(d){
+      var grid = document.getElementById('menuGrid');
+      if(!grid || !d || !d.sections || !d.sections.length) return;
+      var h = '';
+      d.sections.forEach(function(sec){
+        if(!sec.items || !sec.items.length) return;
+        h += '<div class="menu-category"><h3>' + esc(sec.section) + '</h3>';
+        sec.items.forEach(function(it){
+          if(!it || !it.name) return;
+          h += '<div class="menu-item"><div class="menu-item-header">'
+             +   '<span class="menu-item-name">' + esc(it.name) + '</span>'
+             +   (SHOW_PRICES && it.price ? '<span class="menu-item-price">' + esc(it.price) + '</span>' : '')
+             + '</div>';
+          if(it.desc) h += '<p class="menu-item-desc">' + esc(it.desc) + '</p>';
+          h += '</div>';
+        });
+        h += '</div>';
+      });
+      // Only swap if we actually built something. A published-but-empty doc must
+      // not wipe the fallback menu off the page.
+      if(h) grid.innerHTML = h;
+    }
+
+    try{
+      if(!window.firebase) return;
+      var app = firebase.initializeApp(CFG, 'sanfermo-site');
+      var db  = app.firestore();
+      var ref = db.collection('menu-public').doc('current');
+
+      // Try the plain read first. With a public-read rule on menu-public this
+      // works with no sign-in at all, which keeps the site working on any domain
+      // regardless of the Firebase Auth authorized-domains list — one less thing
+      // to remember at DNS cutover. Anonymous auth is only the fallback.
+      ref.get()
+        .then(function(doc){ if(doc.exists) render(doc.data()); })
+        .catch(function(){
+          firebase.auth(app).signInAnonymously()
+            .then(function(){ return ref.get(); })
+            .then(function(doc){ if(doc.exists) render(doc.data()); })
+            .catch(function(){ /* keep the baked-in menu */ });
+        });
+    }catch(e){ /* keep the baked-in menu */ }
+  })();
   </script>
 
 </body>
