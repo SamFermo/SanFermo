@@ -1,0 +1,14 @@
+# San Fermo — sanfermoseattle.com
+# Replaces the Wix robots.txt, which pointed at https://www.sanfermoseattle.com/sitemap.xml
+# and had done since before 2026-08-02 — that URL returned 404 the whole time, so every
+# crawl started with a broken instruction.
+
+User-agent: *
+Allow: /
+
+# /reservations, /faq and /copy-of-faq are redirect stubs preserving the old Wix URLs.
+# They are DELIBERATELY crawlable: each carries `noindex, follow` plus a canonical to
+# the section it moved to, and a crawler must be able to fetch a page to see its
+# noindex. Blocking them would leave Google holding the old URLs with no instruction.
+
+Sitemap: https://www.sanfermoseattle.com/sitemap.xml

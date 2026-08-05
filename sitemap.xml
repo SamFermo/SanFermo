@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  One page. The site is a single document; the nav scrolls to anchors within it, and
+  fragment URLs (#menu, #reservations) are not separate documents so they do not belong
+  here. The three redirect stubs are absent by design — they are noindex.
+
+  No menu PDF entry. The old Wix homepage linked one; the full menu is now inline and
+  published from the staff portal, so the PDF is superseded rather than moved.
+
+  lastmod is the date the content genuinely changed. Move it when you edit the site.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.sanfermoseattle.com/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
