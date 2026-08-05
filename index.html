@@ -732,6 +732,8 @@
       color: var(--terra-light);
     }
 
+    .newsletter-msg { margin-top: 1rem; font-size: 0.92rem; min-height: 1.4em; }
+
     /* ── NEWSLETTER ── */
     .newsletter {
       background: var(--linen);
@@ -1178,7 +1180,7 @@
     <div class="section-inner fade-in">
       <span class="section-label">Join Us</span>
       <h2 class="section-heading">Reserve your table</h2>
-      <p>We offer online reservations through OpenTable for parties up to five. Larger groups of up to ten can be accommodated on weeknight early seatings. Walk-ins are always welcome.</p>
+      <p>We offer online reservations through OpenTable for parties up to five. Larger groups of up to ten can be accommodated on weeknight early seatings. We always keep seating back for walk-ins, so if you can't find a reservation, stop by and check with us.</p>
       <a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" class="btn btn-primary">Book on OpenTable</a>
       <div class="reservations-extras">
         <a href="https://direct.chownow.com/order/22475/locations/32679" target="_blank">Order To-Go</a>
@@ -1202,7 +1204,19 @@
         </div>
         <div class="faq-item">
           <button class="faq-question">Seating &amp; reservations</button>
-          <div class="faq-answer">We have three indoor dining rooms and several heated tables on our deck. Requests for specific areas can be made but are not guaranteed. Reservations book the table for two hours. Our last seating is 9 PM weeknights and 9:30 PM Friday and Saturday.</div>
+          <div class="faq-answer">We have three indoor dining rooms and several heated tables on our deck. Requests for specific areas can be made but are not guaranteed. Reservations book the table for two hours — please be considerate of other parties once you've finished your meal. Our last seating is 9 PM weeknights and 9:30 PM Friday and Saturday.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Groups &amp; large parties</button>
+          <div class="faq-answer">Our largest tables seat five, so group options are limited to early dining on weeknights when we can put tables together. Online booking covers parties up to five; larger groups of up to ten can be reserved Monday through Thursday at 5 o'clock by <a href="mailto:info@sanfermoseattle.com?subject=Group%20Reservations">email</a>.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Multiple bookings</button>
+          <div class="faq-answer">To keep availability open for everyone, we limit reservations to one hold over any two-week period. If you're planning to visit more than once, please <a href="mailto:info@sanfermoseattle.com?subject=Multiple%20Reservations">email us</a> to book.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Gift cards</button>
+          <div class="faq-answer">Choose your amount and fill out the online form. We mail gift cards directly to the purchaser or the recipient — <strong>we don't offer electronic gift cards</strong>, so please allow time for post. If you'd like to give a farm dinner experience instead, <a href="mailto:info@sanfermoseattle.com?subject=San%20Fermo%20farm%20dinner%20gift%20certificate">get in touch</a> and we'll sort it out.</div>
         </div>
         <div class="faq-item">
           <button class="faq-question">Dining with children</button>
@@ -1228,10 +1242,16 @@
   <div class="newsletter">
     <h3>Stay in the loop</h3>
     <p>News from the restaurant and farm, seasonal menus, and event announcements.</p>
-    <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thanks!'; this.querySelector('input').value='';">
-      <input type="email" placeholder="Your email address" required>
-      <button type="submit">Subscribe</button>
+    <!-- This form used to intercept the submit, say "Thanks!" and throw the address
+         away. It now writes to Firestore subscribers/ in the swan-house-checkin
+         project (create-only from the browser, so a public page can never read the
+         list back). One list across both sites, distinguished by the source field.
+         Replaced 2026-08-05. -->
+    <form class="newsletter-form" id="signupForm" novalidate>
+      <input type="email" id="signupEmail" placeholder="Your email address" autocomplete="email" required>
+      <button type="submit" id="signupBtn">Subscribe</button>
     </form>
+    <div class="newsletter-msg" id="signupMsg" role="status" aria-live="polite"></div>
   </div>
 
   <!-- FOOTER -->
@@ -1375,6 +1395,78 @@
             .catch(function(){ /* keep the baked-in menu */ });
         });
     }catch(e){ /* keep the baked-in menu */ }
+  })();
+  </script>
+
+  <!-- ── MAILING LIST ──────────────────────────────────────────────────────────
+       Writes into the SAME subscribers collection as the farm site, in the
+       swan-house-checkin project, so there is one list and one export rather than
+       two half-lists. A second named Firebase app because the menu reader above
+       talks to a different project (sf-staff-portal).
+
+       ⚠ AT DNS CUTOVER: swan-house-checkin enforces App Check, so this only works
+       from a domain registered on the reCAPTCHA Enterprise key below.
+       samfermo.github.io is registered; sanfermoseattle.com is NOT. Add it at
+       cutover or signups here will start failing — visibly, at least: the form
+       tells the guest to email instead rather than pretending it worked.
+       Added 2026-08-05. ──────────────────────────────────────────────────────── -->
+  <script type="module">
+  (async () => {
+    const form = document.getElementById('signupForm');
+    if (!form) return;
+    const msg = document.getElementById('signupMsg');
+    const input = document.getElementById('signupEmail');
+    const btn = document.getElementById('signupBtn');
+    const fallback = 'Sorry — that did not save. Please email ' +
+      '<a href="mailto:info@sanfermoseattle.com?subject=Mailing%20List" ' +
+      'style="color:inherit;text-decoration:underline">info@sanfermoseattle.com</a> ' +
+      'and we will add you by hand.';
+    try {
+      const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js');
+      const fs = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js');
+      const auth = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js');
+      const app = initializeApp({
+        apiKey: "AIzaSyDEOMCOO0EH1RV4vogLF4aOWD0e52dsOOI",
+        authDomain: "swan-house-checkin.firebaseapp.com",
+        projectId: "swan-house-checkin",
+        storageBucket: "swan-house-checkin.firebasestorage.app",
+        messagingSenderId: "743743999844",
+        appId: "1:743743999844:web:e124dd6fa5f791f87b7471"
+      }, 'sanfermo-subscribe');
+      try {
+        const ac = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js');
+        ac.initializeAppCheck(app, {
+          provider: new ac.ReCaptchaEnterpriseProvider('6LeCgjAtAAAAABX8x9jbb3tkOXmmQ5UvNZD1RL2_'),
+          isTokenAutoRefreshEnabled: true
+        });
+      } catch (e) { /* non-blocking */ }
+      const db = fs.getFirestore(app);
+      form.addEventListener('submit', async (ev) => {
+        ev.preventDefault();
+        const email = (input.value || '').trim().toLowerCase();
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) {
+          msg.textContent = 'That address does not look right — mind checking it?';
+          return;
+        }
+        btn.disabled = true; msg.textContent = 'One moment…';
+        try {
+          const a = auth.getAuth(app);
+          if (!a.currentUser) await auth.signInAnonymously(a);
+          await fs.addDoc(fs.collection(db, 'subscribers'), {
+            email: email, source: 'sanfermoseattle.com', createdAt: new Date().toISOString()
+          });
+          form.style.display = 'none';
+          msg.textContent = "You're on the list. Thanks.";
+        } catch (e) {
+          btn.disabled = false; msg.innerHTML = fallback;
+          console.error('signup failed:', e);
+        }
+      });
+    } catch (e) {
+      // Never leave a form that looks live but is not.
+      form.addEventListener('submit', (ev) => { ev.preventDefault(); msg.innerHTML = fallback; });
+      console.error('signup init failed:', e);
+    }
   })();
   </script>
 
