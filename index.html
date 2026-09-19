@@ -883,6 +883,10 @@
     .hero-content p { margin-bottom: 0.9rem !important; }
     .intro { padding: 2rem 2rem !important; }
     .intro p { font-size: clamp(1rem, 1.5vw, 1.12rem) !important; line-height: 1.6 !important; max-width: 760px !important; }
+    @media (max-width: 700px) {
+      .hero-content .hsep { display: none; }
+      .hero-content .hl { display: block; line-height: 1.7; }
+    }
   </style>
 </head>
 <body>
@@ -911,7 +915,7 @@
     <div class="hero-content">
       <h1><img class="hero-logo" src="images/logo-hero-white.png" alt="San Fermo"></h1>
       <p>Seattle, Washington</p>
-      <span class="hero-hours">Dinner nightly at 5 PM &ensp;|&ensp; Reservations & walk-ins welcome</span>
+      <span class="hero-hours"><span class="hl">Dinner nightly at 5 PM</span><span class="hsep"> &ensp;|&ensp; </span><span class="hl">Reservations & walk-ins welcome</span></span>
     </div>
   </section>
 
