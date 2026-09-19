@@ -871,6 +871,18 @@
       opacity: 1;
       transform: translateY(0);
     }
+  
+    /* 2026-09-19 hero rework: one logo, front and center */
+    .nav-logo { opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+    nav.scrolled .nav-logo { opacity: 1; pointer-events: auto; }
+    .hero { align-items: center !important; padding-bottom: 0 !important; }
+    .hero-overlay { background: rgba(0,0,0,0.38) !important; }
+    .hero-content { max-width: 900px !important; }
+    .hero-content h1 { margin-bottom: 1.75rem !important; line-height: 0 !important; }
+    .hero-logo { width: clamp(280px, 46vw, 620px); height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 2px 14px rgba(0,0,0,0.35)); }
+    .hero-content p { margin-bottom: 0.9rem !important; }
+    .intro { padding: 2rem 2rem !important; }
+    .intro p { font-size: clamp(1rem, 1.5vw, 1.12rem) !important; line-height: 1.6 !important; max-width: 760px !important; }
   </style>
 </head>
 <body>
@@ -879,7 +891,6 @@
   <nav id="navbar">
     <a href="#" class="nav-logo">
       <img src="images/logo.png" alt="San Fermo">
-      <span>San Fermo</span>
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">Our Story</a></li>
@@ -898,7 +909,7 @@
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1>Neighborhood Italian on Ballard Avenue</h1>
+      <h1><img class="hero-logo" src="images/logo-hero-white.png" alt="San Fermo"></h1>
       <p>Seattle, Washington</p>
       <span class="hero-hours">Dinner nightly at 5 PM &ensp;|&ensp; Reservations & walk-ins welcome</span>
     </div>
