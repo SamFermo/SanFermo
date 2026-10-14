@@ -914,14 +914,14 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1><img class="hero-logo" src="images/logo-hero-white.png" alt="San Fermo"></h1>
-      <p>Seattle, Washington</p>
-      <span class="hero-hours"><span class="hl">Dinner nightly at 5 PM</span><span class="hsep"> &ensp;|&ensp; </span><span class="hl">Reservations & walk-ins welcome</span></span>
+      <p data-copy="hero.sub">Seattle, Washington</p>
+      <span class="hero-hours"><span class="hl" data-copy="hero.hours1">Dinner nightly at 5 PM</span><span class="hsep"> &ensp;|&ensp; </span><span class="hl" data-copy="hero.hours2">Reservations & walk-ins welcome</span></span>
     </div>
   </section>
 
   <!-- INTRO STRIP -->
   <div class="intro">
-    <p>Family owned and operated since 2016. Regional Italian with locally sourced ingredients from Pacific Northwest farms, ranches, and fisheries.</p>
+    <p data-copy="intro.p1">Family owned and operated since 2016. Regional Italian with locally sourced ingredients from Pacific Northwest farms, ranches, and fisheries.</p>
   </div>
 
   <!-- ABOUT / STORY -->
@@ -933,10 +933,10 @@
         </div>
         <div class="about-text fade-in">
           <span class="section-label">Our Story</span>
-          <h2 class="section-heading">A family table on Ballard Avenue</h2>
-          <p>San Fermo started with a simple idea: cook honest food from great ingredients and share it with the neighborhood. Since 2016, we've been doing exactly that from our spot on Ballard Avenue.</p>
-          <p>Our kitchen draws on the regional traditions of northern Italy, but the ingredients come from close to home. We work directly with Pacific Northwest farms, ranches, and fisheries, many of which we've partnered with since day one. The menu changes with the seasons because our sourcing does too.</p>
-          <p>We farm 34 acres of our own at Swan House Farm in the Skagit Valley, where we raise animals, tend orchards, and grow produce that finds its way to your plate. The connection between the farm and the restaurant is at the heart of everything we do.</p>
+          <h2 class="section-heading" data-copy="about.h2">A family table on Ballard Avenue</h2>
+          <p data-copy="about.p1">San Fermo started with a simple idea: cook honest food from great ingredients and share it with the neighborhood. Since 2016, we've been doing exactly that from our spot on Ballard Avenue.</p>
+          <p data-copy="about.p2">Our kitchen draws on the regional traditions of northern Italy, but the ingredients come from close to home. We work directly with Pacific Northwest farms, ranches, and fisheries, many of which we've partnered with since day one. The menu changes with the seasons because our sourcing does too.</p>
+          <p data-copy="about.p3">We farm 34 acres of our own at Swan House Farm in the Skagit Valley, where we raise animals, tend orchards, and grow produce that finds its way to your plate. The connection between the farm and the restaurant is at the heart of everything we do.</p>
         </div>
       </div>
     </div>
@@ -945,16 +945,16 @@
   <!-- PHOTO GALLERY -->
   <div class="gallery">
     <div class="gallery-grid fade-in">
-      <div class="gallery-item">
+      <div data-pool-slot="std" class="gallery-item">
         <img src="images/Fermo3.31.23-52-800.jpg" alt="Grating fresh cheese over ravioli" loading="lazy">
       </div>
-      <div class="gallery-item wide">
+      <div data-pool-slot="wide" class="gallery-item wide">
         <img src="images/bar-wide-1920.jpg" alt="Bartender pouring cocktails at San Fermo" loading="lazy">
       </div>
-      <div class="gallery-item wide">
+      <div data-pool-slot="wide" class="gallery-item wide">
         <img src="images/Fermo3.31.23-56-800.jpg" alt="Fresh pasta being made in the kitchen" loading="lazy">
       </div>
-      <div class="gallery-item">
+      <div data-pool-slot="std" class="gallery-item">
         <img src="images/Fermo3.31.23-58-800.jpg" alt="Torching fish on the line" loading="lazy">
       </div>
     </div>
@@ -1167,24 +1167,24 @@
       <div class="farm-hero-overlay"></div>
       <div class="farm-hero-content fade-in">
         <span class="section-label">Swan House Farm</span>
-        <h2>From our fields to your table</h2>
-        <p>34 acres in the Skagit Valley with market gardens, orchards, sheep, hogs, cattle, and poultry. The farm is the backbone of our kitchen and the future of what San Fermo is becoming.</p>
+        <h2 data-copy="farm.h2">From our fields to your table</h2>
+        <p data-copy="farm.p1">34 acres in the Skagit Valley with market gardens, orchards, sheep, hogs, cattle, and poultry. The farm is the backbone of our kitchen and the future of what San Fermo is becoming.</p>
         <a href="https://www.swanhousefarm.com" target="_blank" class="btn btn-outline">Visit the Farm</a>
       </div>
     </div>
     <div class="farm-details">
       <div class="farm-details-grid fade-in">
         <div class="farm-detail">
-          <h4>Farm Dinners</h4>
-          <p>Multi-course meals served outdoors on the farm during summer. A family affair with long tables, open fire, and ingredients picked that day.</p>
+          <h4 data-copy="farm.card.h1">Farm Dinners</h4>
+          <p data-copy="farm.card.p1">Multi-course meals served outdoors on the farm during summer. A family affair with long tables, open fire, and ingredients picked that day.</p>
         </div>
         <div class="farm-detail">
-          <h4>Private Events</h4>
-          <p>The farm is available for intimate gatherings, celebrations, and corporate retreats. Reach out to discuss what we can put together for you.</p>
+          <h4 data-copy="farm.card.h2">Private Events</h4>
+          <p data-copy="farm.card.p2">The farm is available for intimate gatherings, celebrations, and corporate retreats. Reach out to discuss what we can put together for you.</p>
         </div>
         <div class="farm-detail">
-          <h4>What We Grow</h4>
-          <p>Seasonal vegetables, stone fruit, apples, herbs, and flowers. Our animals are raised on pasture and processed on-site or at local facilities.</p>
+          <h4 data-copy="farm.card.h3">What We Grow</h4>
+          <p data-copy="farm.card.p3">Seasonal vegetables, stone fruit, apples, herbs, and flowers. Our animals are raised on pasture and processed on-site or at local facilities.</p>
         </div>
       </div>
     </div>
@@ -1194,8 +1194,8 @@
   <section class="reservations" id="reservations">
     <div class="section-inner fade-in">
       <span class="section-label">Join Us</span>
-      <h2 class="section-heading">Reserve your table</h2>
-      <p>We offer online reservations through OpenTable for parties up to five. Larger groups of up to ten can be accommodated on weeknight early seatings. We always keep seating back for walk-ins, so if you can't find a reservation, stop by and check with us.</p>
+      <h2 class="section-heading" data-copy="res.h2">Reserve your table</h2>
+      <p data-copy="res.p1">We offer online reservations through OpenTable for parties up to five. Larger groups of up to ten can be accommodated on weeknight early seatings. We always keep seating back for walk-ins, so if you can't find a reservation, stop by and check with us.</p>
       <a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" class="btn btn-primary">Book on OpenTable</a>
       <div class="reservations-extras">
         <a href="https://direct.chownow.com/order/22475/locations/32679" target="_blank">Order To-Go</a>
@@ -1210,44 +1210,44 @@
     <div class="section-inner">
       <div style="text-align:center; margin-bottom: 3rem;" class="fade-in">
         <span class="section-label">Good to Know</span>
-        <h2 class="section-heading">Frequently asked questions</h2>
+        <h2 class="section-heading" data-copy="faq.h2">Frequently asked questions</h2>
       </div>
       <div class="fade-in">
         <div class="faq-item">
-          <button class="faq-question">Service charge</button>
-          <div class="faq-answer">We've replaced traditional tipping with a 23% service charge on dine-in orders and 10% on to-go. This supports fair wages across the entire team. Unlike tips, service charge is subject to Washington State sales tax.</div>
+          <button class="faq-question" data-copy="faq.q1">Service charge</button>
+          <div class="faq-answer" data-copy="faq.a1">We've replaced traditional tipping with a 23% service charge on dine-in orders and 10% on to-go. This supports fair wages across the entire team. Unlike tips, service charge is subject to Washington State sales tax.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">Seating &amp; reservations</button>
-          <div class="faq-answer">We have three indoor dining rooms and several heated tables on our deck. Requests for specific areas can be made but are not guaranteed. Reservations book the table for two hours — please be considerate of other parties once you've finished your meal. Our last seating is 9 PM weeknights and 9:30 PM Friday and Saturday.</div>
+          <button class="faq-question" data-copy="faq.q2">Seating &amp; reservations</button>
+          <div class="faq-answer" data-copy="faq.a2">We have three indoor dining rooms and several heated tables on our deck. Requests for specific areas can be made but are not guaranteed. Reservations book the table for two hours — please be considerate of other parties once you've finished your meal. Our last seating is 9 PM weeknights and 9:30 PM Friday and Saturday.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">Groups &amp; large parties</button>
-          <div class="faq-answer">Our largest tables seat five, so group options are limited to early dining on weeknights when we can put tables together. Online booking covers parties up to five; larger groups of up to ten can be reserved Monday through Thursday at 5 o'clock by <a href="mailto:info@sanfermoseattle.com?subject=Group%20Reservations">email</a>.</div>
+          <button class="faq-question" data-copy="faq.q3">Groups &amp; large parties</button>
+          <div class="faq-answer" data-copy="faq.a3">Our largest tables seat five, so group options are limited to early dining on weeknights when we can put tables together. Online booking covers parties up to five; larger groups of up to ten can be reserved Monday through Thursday at 5 o'clock by <a href="mailto:info@sanfermoseattle.com?subject=Group%20Reservations">email</a>.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">Multiple bookings</button>
-          <div class="faq-answer">To keep availability open for everyone, we limit reservations to one hold over any two-week period. If you're planning to visit more than once, please <a href="mailto:info@sanfermoseattle.com?subject=Multiple%20Reservations">email us</a> to book.</div>
+          <button class="faq-question" data-copy="faq.q4">Multiple bookings</button>
+          <div class="faq-answer" data-copy="faq.a4">To keep availability open for everyone, we limit reservations to one hold over any two-week period. If you're planning to visit more than once, please <a href="mailto:info@sanfermoseattle.com?subject=Multiple%20Reservations">email us</a> to book.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">Gift cards</button>
-          <div class="faq-answer">Choose your amount and fill out the online form. We mail gift cards directly to the purchaser or the recipient — <strong>we don't offer electronic gift cards</strong>, so please allow time for post. If you'd like to give a farm dinner experience instead, <a href="mailto:info@sanfermoseattle.com?subject=San%20Fermo%20farm%20dinner%20gift%20certificate">get in touch</a> and we'll sort it out.</div>
+          <button class="faq-question" data-copy="faq.q5">Gift cards</button>
+          <div class="faq-answer" data-copy="faq.a5">Choose your amount and fill out the online form. We mail gift cards directly to the purchaser or the recipient — <strong>we don't offer electronic gift cards</strong>, so please allow time for post. If you'd like to give a farm dinner experience instead, <a href="mailto:info@sanfermoseattle.com?subject=San%20Fermo%20farm%20dinner%20gift%20certificate">get in touch</a> and we'll sort it out.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">Dining with children</button>
-          <div class="faq-answer">We are very family friendly. Please indicate if you need a high chair and be sure to include all members of your party when booking so we can plan the right table.</div>
+          <button class="faq-question" data-copy="faq.q6">Dining with children</button>
+          <div class="faq-answer" data-copy="faq.a6">We are very family friendly. Please indicate if you need a high chair and be sure to include all members of your party when booking so we can plan the right table.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">Dogs</button>
-          <div class="faq-answer">We have two tables on our front porch and during summer four additional sidewalk cafe tables that can accommodate pets. These tables cannot be reserved, so there may be a wait if you plan to bring your pooch.</div>
+          <button class="faq-question" data-copy="faq.q7">Dogs</button>
+          <div class="faq-answer" data-copy="faq.a7">We have two tables on our front porch and during summer four additional sidewalk cafe tables that can accommodate pets. These tables cannot be reserved, so there may be a wait if you plan to bring your pooch.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">To-go ordering</button>
-          <div class="faq-answer">Our to-go menu goes live nightly at 4 PM. Follow the Order To-Go link to place your order through ChowNow.</div>
+          <button class="faq-question" data-copy="faq.q8">To-go ordering</button>
+          <div class="faq-answer" data-copy="faq.a8">Our to-go menu goes live nightly at 4 PM. Follow the Order To-Go link to place your order through ChowNow.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">Outside food &amp; wine</button>
-          <div class="faq-answer">All food and beverage must be ordered from our menu and wine list. We don't have a corkage policy or a cake fee.</div>
+          <button class="faq-question" data-copy="faq.q9">Outside food &amp; wine</button>
+          <div class="faq-answer" data-copy="faq.a9">All food and beverage must be ordered from our menu and wine list. We don't have a corkage policy or a cake fee.</div>
         </div>
       </div>
     </div>
@@ -1255,8 +1255,8 @@
 
   <!-- NEWSLETTER -->
   <div class="newsletter">
-    <h3>Stay in the loop</h3>
-    <p>News from the restaurant and farm, seasonal menus, and event announcements.</p>
+    <h3 data-copy="news.h3">Stay in the loop</h3>
+    <p data-copy="news.p1">News from the restaurant and farm, seasonal menus, and event announcements.</p>
     <!-- This form used to intercept the submit, say "Thanks!" and throw the address
          away. It now writes to Firestore subscribers/ in the swan-house-checkin
          project (create-only from the browser, so a public page can never read the
@@ -1274,13 +1274,13 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <h3>San Fermo</h3>
-        <p>Neighborhood Italian on Ballard Avenue.<br>Family owned since 2016.</p>
+        <p data-copy="foot.tag">Neighborhood Italian on Ballard Avenue.<br>Family owned since 2016.</p>
       </div>
       <div class="footer-col">
         <h4>Visit</h4>
-        <p>5341 Ballard Ave NW</p>
-        <p>Seattle, WA 98107</p>
-        <p style="margin-top: 0.5rem;">Dinner nightly at 5 PM</p>
+        <p data-copy="foot.addr1">5341 Ballard Ave NW</p>
+        <p data-copy="foot.addr2">Seattle, WA 98107</p>
+        <p style="margin-top: 0.5rem;" data-copy="foot.hours">Dinner nightly at 5 PM</p>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
@@ -1289,7 +1289,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 San Fermo</span>
+      <span id="siteEditEntry">&copy; 2026 San Fermo</span>
       <div class="footer-social">
         <a href="https://www.instagram.com/sanfermoseattle" target="_blank">Instagram</a>
       </div>
@@ -1485,5 +1485,158 @@
   })();
   </script>
 
+<!-- ── SITE-COPY READER v1 ──────────────────────────────────────────────────────
+     The words on this page can be edited in place by the family (footer, tap the
+     copyright line five times, or add ?edit to the address). Edits are published to
+     Firestore site-copy/<site> in swan-house-checkin and this block overlays them on
+     load. The HTML above is the fallback and must stay current-ish: the nightly push
+     bakes the published copy back into it.
+
+     Never-blank rule: a missing doc, a denied read, App Check trouble or an offline
+     guest leaves the baked copy exactly as it is. Only a non-empty, sanitised value
+     replaces a block. Console logs one line either way so a silent failure is visible.
+     Added 2026-10-14. ──────────────────────────────────────────────────────────── -->
+<script>
+  window.SITE = 'sanfermo';
+  window.SITE_NAME = 'San Fermo';
+  window.SITE_CFG = {
+    apiKey: "AIzaSyDEOMCOO0EH1RV4vogLF4aOWD0e52dsOOI",
+    authDomain: "swan-house-checkin.firebaseapp.com",
+    projectId: "swan-house-checkin",
+    storageBucket: "swan-house-checkin.firebasestorage.app",
+    messagingSenderId: "743743999844",
+    appId: "1:743743999844:web:e124dd6fa5f791f87b7471"
+  };
+  window.SITE_APPCHECK_KEY = '6LeCgjAtAAAAABX8x9jbb3tkOXmmQ5UvNZD1RL2_';
+  // localhost is not on the reCAPTCHA key; a registered debug token lets local tests run.
+  if (location.hostname === 'localhost') self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+</script>
+<script type="module">
+(async () => {
+  // KEEP BYTE-IDENTICAL WITH sanitize() IN edit.js (tools/test_edit_pure.mjs asserts it).
+  function sanitize(html) {
+    const ALLOWED = { B: 1, I: 1, EM: 1, STRONG: 1, BR: 1, A: 1 };
+    const tpl = document.createElement('template');
+    tpl.innerHTML = String(html == null ? '' : html);
+    const walk = (node) => {
+      for (const child of Array.from(node.childNodes)) {
+        if (child.nodeType === 3) continue;
+        if (child.nodeType !== 1) { child.remove(); continue; }
+        const name = child.tagName.toUpperCase();
+        if (name === 'SCRIPT' || name === 'STYLE') { child.remove(); continue; }
+        walk(child);
+        if (!ALLOWED[name]) { child.replaceWith(...Array.from(child.childNodes)); continue; }
+        for (const attr of Array.from(child.attributes)) {
+          if (name === 'A' && attr.name === 'href' && /^(https?:|mailto:|tel:|#|\/)/i.test(attr.value.trim())) continue;
+          child.removeAttribute(attr.name);
+        }
+        if (name === 'A' && !child.getAttribute('href')) child.replaceWith(...Array.from(child.childNodes));
+      }
+    };
+    walk(tpl.content);
+    const out = tpl.innerHTML;
+    return out.replace(/<br\s*\/?>/gi, '').trim() === '' ? '' : out;
+  }
+  // Baked text is kept per key so edit mode can offer "Restore original text".
+  window.__siteCopyBaked = {};
+  document.querySelectorAll('[data-copy]').forEach((el) => { window.__siteCopyBaked[el.getAttribute('data-copy')] = el.innerHTML; });
+  function applyCopy(doc) {
+    let n = 0;
+    if (!doc || !doc.blocks) return n;
+    document.querySelectorAll('[data-copy]').forEach((el) => {
+      const key = el.getAttribute('data-copy');
+      if (!(key in doc.blocks)) return;
+      const html = sanitize(doc.blocks[key]);
+      if (!html) return;
+      el.innerHTML = html; n++;
+    });
+    return n;
+  }
+  let loaded = null;
+  const done = () => {
+    window.__siteCopy = loaded;
+    document.dispatchEvent(new CustomEvent('sitecopy:loaded', { detail: loaded }));
+  };
+  try {
+    const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js');
+    const fs = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js');
+    const app = initializeApp(window.SITE_CFG, window.SITE + '-copy');
+    try {
+      const ac = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js');
+      ac.initializeAppCheck(app, {
+        provider: new ac.ReCaptchaEnterpriseProvider(window.SITE_APPCHECK_KEY),
+        isTokenAutoRefreshEnabled: true
+      });
+    } catch (e) { /* non-blocking */ }
+    window.__siteCopyApp = app;
+    const snap = await fs.getDoc(fs.doc(fs.getFirestore(app), 'site-copy', window.SITE));
+    if (snap.exists()) {
+      loaded = snap.data();
+      console.log('sitecopy: applied ' + applyCopy(loaded));
+    } else {
+      console.log('sitecopy: none');
+    }
+  } catch (e) {
+    console.log('sitecopy: error ' + (e && (e.code || e.message)));
+  }
+  done();
+})();
+</script>
+<!-- ── POOL LOADER v1 ───────────────────────────────────────────────────────────
+     Gallery photos rotate from images/pool/ (synced nightly from the family's shared
+     Drive folder by tools/photo_pool_sweep.py). On every page load the slots below are
+     refilled at random from the manifest, minus any photo hidden in edit mode. Fewer
+     pool photos than slots, or any error, leaves the baked <img> tags exactly as they
+     are. Added 2026-10-14. ─────────────────────────────────────────────────────── -->
+<script>
+(function () {
+  // KEEP BYTE-IDENTICAL WITH assignSlots() IN edit.js (tools/test_edit_pure.mjs asserts it).
+  function assignSlots(pool, slots) {
+    if (!pool || pool.length < slots.length) return null;
+    const shuffled = pool.slice();
+    for (let i = shuffled.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; }
+    const out = new Array(slots.length); const used = new Set();
+    slots.forEach((s, i) => {
+      if (s !== 'wide') return;
+      const p = shuffled.find((x) => !used.has(x.id) && x.w > x.h);
+      if (p) { out[i] = p; used.add(p.id); }
+    });
+    slots.forEach((s, i) => {
+      if (out[i] || s === 'wide') return;
+      const p = shuffled.find((x) => !used.has(x.id));
+      if (p) { out[i] = p; used.add(p.id); }
+    });
+    return Array.from(out).every(Boolean) ? out : null;  // Array.from: holes are not skipped
+  }
+  document.addEventListener('sitecopy:loaded', async (ev) => {
+    try {
+      const items = Array.from(document.querySelectorAll('[data-pool-slot]'));
+      if (!items.length) return;
+      const res = await fetch('images/pool/manifest.json', { cache: 'no-cache' });
+      if (!res.ok) return;
+      const manifest = await res.json();
+      const hidden = (ev.detail && ev.detail.hiddenPhotos) || [];
+      const pool = manifest.filter((p) => p && p.id && p.file && !hidden.includes(p.id));
+      const pick = assignSlots(pool, items.map((e) => e.getAttribute('data-pool-slot')));
+      if (!pick) return;
+      items.forEach((item, i) => {
+        const img = item.querySelector('img'); if (!img) return;
+        img.src = 'images/pool/' + pick[i].file; img.alt = (window.SITE_NAME || '') + ' photo';
+      });
+    } catch (e) { /* baked images stand */ }
+  }, { once: true });
+})();
+</script>
+<!-- ── EDIT-MODE ENTRY ── five taps on the copyright line within 3 s, or ?edit in the
+     address, loads edit.js (the family's in-site copy editor). Guests never load it. -->
+<script>
+(function () {
+  var n = 0, t0 = 0;
+  function load() { if (document.getElementById('siteEditScript')) return; var s = document.createElement('script'); s.type = 'module'; s.id = 'siteEditScript'; s.src = 'edit.js?v=' + Date.now(); document.body.appendChild(s); }
+  var entry = document.getElementById('siteEditEntry');
+  if (entry) entry.addEventListener('click', function () { var now = Date.now(); if (now - t0 > 3000) n = 0; t0 = now; if (++n >= 5) { n = 0; load(); } });
+  if (/[?&](edit|oobCode)\b/.test(location.search)) load();
+})();
+</script>
 </body>
 </html>
