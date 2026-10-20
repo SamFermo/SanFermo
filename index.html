@@ -9,7 +9,17 @@
   <meta property="og:title" content="San Fermo | Neighborhood Italian on Ballard Avenue">
   <meta property="og:description" content="Family owned neighborhood Italian in Seattle's Ballard neighborhood. Regional Italian with locally sourced Pacific Northwest ingredients.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.sanfermoseattle.com">
+  <meta property="og:url" content="https://www.sanfermoseattle.com/">
+  <link rel="canonical" href="https://www.sanfermoseattle.com/">
+  <meta property="og:image" content="https://www.sanfermoseattle.com/images/patio-hero-1920.jpg">
+  <meta property="og:site_name" content="San Fermo">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "Restaurant", "name": "San Fermo", "url": "https://www.sanfermoseattle.com/", "image": "https://www.sanfermoseattle.com/images/patio-hero-1920.jpg", "telephone": "+1-206-342-1530", "email": "info@sanfermoseattle.com", "servesCuisine": "Italian", "priceRange": "$$$", "address": {"@type": "PostalAddress", "streetAddress": "5341 Ballard Ave NW", "addressLocality": "Seattle", "addressRegion": "WA", "postalCode": "98107", "addressCountry": "US"}, "acceptsReservations": "https://www.opentable.com/restref/client/?restref=209479&lang=en-US", "menu": "https://www.sanfermoseattle.com/#menu", "sameAs": ["https://www.instagram.com/sanfermoseattle"]}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -397,7 +407,7 @@
       font-family: var(--font-sans);
       font-size: 0.8rem;
       font-weight: 300;
-      color: var(--warm-gray-light);
+      color: var(--warm-gray); /* was --warm-gray-light (2.6:1); 2026-10-20 contrast fix */
       line-height: 1.5;
       font-style: italic;
     }
@@ -407,7 +417,7 @@
       margin-top: 3rem;
       font-family: var(--font-sans);
       font-size: 0.8rem;
-      color: var(--warm-gray-light);
+      color: var(--warm-gray); /* contrast fix 2026-10-20 */
       font-style: italic;
     }
 
@@ -574,7 +584,7 @@
     .reservations-extras a {
       font-family: var(--font-sans);
       font-size: 0.8rem;
-      color: var(--warm-gray-light);
+      color: var(--warm-gray); /* contrast fix 2026-10-20 */
       text-decoration: none;
       border-bottom: 1px solid transparent;
       transition: all 0.3s ease;
@@ -969,190 +979,161 @@
         <p data-copy="menu.p1">We offer a small menu that changes daily. The chef requests that you put your whole order in at once. This is our current menu, published straight from the kitchen.</p>
       </div>
       <div class="menu-grid fade-in" id="menuGrid">
+        <!-- Fallback only: matches the menu published from the staff portal 2026-10-17 (refreshed 2026-10-20). The live menu replaces this on load. -->
         <div class="menu-category">
           <h3>Antipasti</h3>
           <div class="menu-item">
             <div class="menu-item-header">
-              <span class="menu-item-name">House Made Focaccia</span>
-              
-            </div>
-            <p class="menu-item-desc">balsamic, olive oil</p>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-header">
               <span class="menu-item-name">Sea Wolf Bakery Baguette</span>
-              
             </div>
-            <p class="menu-item-desc">les pr&eacute;s sal&eacute;s butter, sea salt</p>
+            <p class="menu-item-desc">les prés salés butter, sea salt</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-header">
               <span class="menu-item-name">Castelvetrano Olives</span>
-              
             </div>
             <p class="menu-item-desc">fennel pollen, citrus, rosemary</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-header">
               <span class="menu-item-name">Marcona Almonds</span>
-              
             </div>
-            <p class="menu-item-desc">fried rosemary, sea salt</p>
+            <p class="menu-item-desc">rosemary olive oil, fried rosemary, maldon sea salt</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-header">
               <span class="menu-item-name">Farinata</span>
-              
             </div>
-            <p class="menu-item-desc">chickpea flatbread, house cogliata, swan house preserves, sea salt</p>
+            <p class="menu-item-desc">chickpea flatbread, house cagliata, seasonal preserve, fresh thyme, sea salt</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-header">
               <span class="menu-item-name">House Caesar</span>
-              
             </div>
             <p class="menu-item-desc">anchovy, parmigiano reggiano, red wine croutons</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-header">
-              <span class="menu-item-name">Endive Salad</span>
-              
+              <span class="menu-item-name">Farm House Salad</span>
             </div>
-            <p class="menu-item-desc">smoked trout, fris&eacute;e, oregano vinaigrette, marcona almonds</p>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-header">
-              <span class="menu-item-name">Burrata</span>
-              
-            </div>
-            <p class="menu-item-desc">radicchio, red bell pepper, balsamic vinegar, mint, crostini</p>
+            <p class="menu-item-desc">mixed greens, apple, shaved fennel, bread and butter pickled onion, candied almonds, apple vinaigrette</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-header">
               <span class="menu-item-name">Bruschetta</span>
-              
             </div>
-            <p class="menu-item-desc">speck, poached pear, gorgonzola dolce, walnuts, miners lettuce, saba</p>
+            <p class="menu-item-desc">Swan House Farm peperonata, burrata, micro basil, saba</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Ribollita</span>
+            </div>
+            <p class="menu-item-desc">Corona beans, cabbage, zucchini, torn croutons, pistachio, chili flake</p>
           </div>
         </div>
         <div class="menu-category">
           <h3>Primi &amp; Secondi</h3>
           <div class="menu-item">
             <div class="menu-item-header">
-              <span class="menu-item-name">Saffron Spaghetti Bolognese</span>
-              
+              <span class="menu-item-name">Swan House Bolognese</span>
             </div>
-            <p class="menu-item-desc">pork, veal, rosemary, fennel, tomato, parmigiano reggiano</p>
+            <p class="menu-item-desc">saffron spaghetti, pork, beef, rosemary, fennel, tomato, parmigiano reggiano</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-header">
-              <span class="menu-item-name">Agnolotti del Plin</span>
-              
+              <span class="menu-item-name">Rigatoni</span>
             </div>
-            <p class="menu-item-desc">lemon ricotta, preserved meyer lemon, nettle pesto, pistachio</p>
+            <p class="menu-item-desc">italian sausage, crimini mushroom, kale, garlic, cream, pecorino romano, aleppo oil</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-header">
-              <span class="menu-item-name">Paccheri</span>
-              
+              <span class="menu-item-name">Girella</span>
             </div>
-            <p class="menu-item-desc">creamy vodka sauce, red onion, olio d'oliva, burrata, basil</p>
+            <p class="menu-item-desc">ricotta and pumpkin seed filling, sage, aleppo pepper, pumpkin puree, marinated kale</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-header">
-              <span class="menu-item-name">Bucatini Carbonara</span>
-              
+              <span class="menu-item-name">Cavatelli al Granchio</span>
             </div>
-            <p class="menu-item-desc">swan house egg yolk, guanciale, black pepper, pecorino romano</p>
+            <p class="menu-item-desc">dungeness crab meat, lemon, butter, garlic, chive</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-header">
-              <span class="menu-item-name">Risotto Funghi</span>
-              
+              <span class="menu-item-name">Risotto</span>
             </div>
-            <p class="menu-item-desc">marinated realtake mushrooms, marjoram, goat cheese, garlic</p>
+            <p class="menu-item-desc">Swan House georgia candy roaster, garlic, shallot, sherry, parmesan, fried sage, pepita</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-header">
-              <span class="menu-item-name">Sea Scallops</span>
-              
+              <span class="menu-item-name">Pesce al Cartoccio</span>
             </div>
-            <p class="menu-item-desc">polenta, tomato concasse, basil, duck fat</p>
+            <p class="menu-item-desc">black cod, potato, onion, matsutake mushroom, garlic herb butter, lemon</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-header">
-              <span class="menu-item-name">Filet Mignon</span>
-              
+              <span class="menu-item-name">Braised Short Rib</span>
             </div>
-            <p class="menu-item-desc">confit fingerling potatoes, garlic aioli, horseradish gremolata</p>
+            <p class="menu-item-desc">sour cream polenta, chanterelle, herbs, horseradish vinaigrette, demi glace</p>
           </div>
         </div>
         <div class="menu-category">
           <h3>Cocktails</h3>
           <div class="menu-item">
             <div class="menu-item-header">
-              <span class="menu-item-name">The Cure for the Long Dark</span>
-              
+              <span class="menu-item-name">Minivan Mega-Fun</span>
             </div>
-            <p class="menu-item-desc">dark rum, allspice dram, oloroso sherry, orange juice, lemon, nutmeg, cynar</p>
+            <p class="menu-item-desc">tequila blanco, blistered shishito pepper simple, veso tomato vermouth, lime, gran classico, soda</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-header">
-              <span class="menu-item-name">A Midnight Dream</span>
-              
+              <span class="menu-item-name">Oh My Word!</span>
             </div>
-            <p class="menu-item-desc">uncle val's botanical gin, blueberry and yuzu maceration, lavanda, gran classico, lemon, basil</p>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-header">
-              <span class="menu-item-name">The Final Girl</span>
-              
-            </div>
-            <p class="menu-item-desc">mezcal, tepernol, amaro ciociaro, brucato "woodlands" amaro, lemon</p>
+            <p class="menu-item-desc">gin, aperol, peach and nectarine maceration, lemon, grapefruit bitters</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-header">
               <span class="menu-item-name">San Fermo Negroni</span>
-              
             </div>
-            <p class="menu-item-desc">gin, campari,americano bianco, vermouth, grapefruit expression</p>
+            <p class="menu-item-desc">gin, campari, amaricano bianco, yzaguirre barrel aged sweet vermouth, rose tincture, grapefruit expression</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-header">
-              <span class="menu-item-name">Evil Endeavors</span>
-              
+              <span class="menu-item-name">Imaginary Friend</span>
             </div>
-            <p class="menu-item-desc">earl grey infused buffalo trace bourbon, tawny port, g&eacute;n&eacute;py des alps, orange bitters</p>
+            <p class="menu-item-desc">mezcal, spiced red wine and balsamic agrodolce, amaro lucano, lime, veso fig leaf vermouth, black lemon bitters</p>
           </div>
-          <div class="menu-item" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.06);">
+          <div class="menu-item">
             <div class="menu-item-header">
-              <span class="menu-item-name" style="font-style: italic; font-weight: 400;">Beer, NA &amp; Wine</span>
+              <span class="menu-item-name">Grandma's Ash Tray</span>
             </div>
-            <p class="menu-item-desc">Peroni, Fremont Lush IPA, house mocktails, NA options, and a curated Italian wine list featuring selections from Piedmont, Tuscany, Alto Adige, and beyond.</p>
+            <p class="menu-item-desc">bourbon, brandy, yzaguirre rose vermouth, amaro ciociaro, mr. black, lavender bitters</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Ya sure you betcha</span>
+            </div>
+            <p class="menu-item-desc">white port, mancino cherry blossom vermouth, veso alpine vermouth, blueberry and lavender maceration, lemon, soda, prosecco</p>
           </div>
         </div>
         <div class="menu-category">
           <h3>Dolci</h3>
           <div class="menu-item">
             <div class="menu-item-header">
-              <span class="menu-item-name">Earl Grey Tiramisu</span>
-              
+              <span class="menu-item-name">Classic Tiramisu</span>
             </div>
-            <p class="menu-item-desc">mascarpone, ladyfingers, miso tea, dark rum, bergamot sabayone</p>
+            <p class="menu-item-desc">mascarpone, ladyfingers, planteray rum, caffè umbria decaf coffee, cocoa powder</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-header">
-              <span class="menu-item-name">Carrot Cake</span>
-              
+              <span class="menu-item-name">Lemon Olive Oil Cake</span>
             </div>
-            <p class="menu-item-desc">ginger cream, cheese zabaione, carrot pur&eacute;e, walnut dukkah</p>
+            <p class="menu-item-desc">olio verde, apple mascarpone, lemon syrup, brown butter powdered sugar</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-header">
               <span class="menu-item-name">Seasonal Gelato</span>
-              
             </div>
-            <p class="menu-item-desc">rotating seasonal flavors</p>
+            <p class="menu-item-desc">ask the kitchen for tonight's flavor</p>
           </div>
         </div>
       </div>
@@ -1263,7 +1244,7 @@
          list back). One list across both sites, distinguished by the source field.
          Replaced 2026-08-05. -->
     <form class="newsletter-form" id="signupForm" novalidate>
-      <input type="email" id="signupEmail" placeholder="Your email address" autocomplete="email" required>
+      <input type="email" id="signupEmail" placeholder="Your email address" aria-label="Email address" autocomplete="email" required>
       <button type="submit" id="signupBtn">Subscribe</button>
     </form>
     <div class="newsletter-msg" id="signupMsg" role="status" aria-live="polite"></div>
@@ -1289,7 +1270,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span id="siteEditEntry">&copy; 2026 San Fermo</span>
+      <span id="siteEditEntry">&copy; <span id="copyYear">2026</span> San Fermo</span>
       <div class="footer-social">
         <a href="https://www.instagram.com/sanfermoseattle" target="_blank" data-copy="foot.instagram">Instagram</a>
       </div>
@@ -1297,6 +1278,9 @@
   </footer>
 
   <script>
+    // Copyright year keeps itself current (2026-10-20). The span sits INSIDE #siteEditEntry,
+    // so the five-tap edit entry still counts taps on the whole line.
+    (function(){ var y = document.getElementById('copyYear'); if (y) y.textContent = new Date().getFullYear(); })();
     // Scroll-aware nav
     const nav = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
