@@ -1238,11 +1238,8 @@
   <div class="newsletter">
     <h3 data-copy="news.h3">Stay in the loop</h3>
     <p data-copy="news.p1">News from the restaurant and farm, seasonal menus, and event announcements.</p>
-    <!-- This form used to intercept the submit, say "Thanks!" and throw the address
-         away. It now writes to Firestore subscribers/ in the swan-house-checkin
-         project (create-only from the browser, so a public page can never read the
-         list back). One list across both sites, distinguished by the source field.
-         Replaced 2026-08-05. -->
+    <!-- Posts to MailerLite (one list for both sites). Script is near the end of the page.
+         2026-08-05: Firestore write. 2026-10-27: MailerLite. -->
     <form class="newsletter-form" id="signupForm" novalidate>
       <input type="email" id="signupEmail" placeholder="Your email address" aria-label="Email address" autocomplete="email" required>
       <button type="submit" id="signupBtn">Subscribe</button>
@@ -1398,74 +1395,48 @@
   </script>
 
   <!-- ── MAILING LIST ──────────────────────────────────────────────────────────
-       Writes into the SAME subscribers collection as the farm site, in the
-       swan-house-checkin project, so there is one list and one export rather than
-       two half-lists. A second named Firebase app because the menu reader above
-       talks to a different project (sf-staff-portal).
-
-       ⚠ AT DNS CUTOVER: swan-house-checkin enforces App Check, so this only works
-       from a domain registered on the reCAPTCHA Enterprise key below.
-       samfermo.github.io is registered; sanfermoseattle.com is NOT. Add it at
-       cutover or signups here will start failing — visibly, at least: the form
-       tells the guest to email instead rather than pretending it worked.
-       Added 2026-08-05. ──────────────────────────────────────────────────────── -->
-  <script type="module">
-  (async () => {
-    const form = document.getElementById('signupForm');
+       Posts straight to the MailerLite form "Website signup (both sites)", which
+       drops the address into the Swan House Farm list group. No Firebase, no App
+       Check, no domain registration needed: MailerLite answers any origin.
+       Rewired 2026-10-27 (was a Firestore subscribers/ write, see the
+       index.html.bak-2026-10-27-premailerlite backup). ────────────────────────── -->
+  <script>
+  (function () {
+    var form = document.getElementById('signupForm');
     if (!form) return;
-    const msg = document.getElementById('signupMsg');
-    const input = document.getElementById('signupEmail');
-    const btn = document.getElementById('signupBtn');
-    const fallback = 'Sorry — that did not save. Please email ' +
+    var msg = document.getElementById('signupMsg');
+    var input = document.getElementById('signupEmail');
+    var btn = document.getElementById('signupBtn');
+    var ML_FORM = 'https://assets.mailerlite.com/jsonp/2748716/forms/202538465632454055/subscribe';
+    var fallback = 'Sorry — that did not save. Please email ' +
       '<a href="mailto:info@sanfermoseattle.com?subject=Mailing%20List" ' +
       'style="color:inherit;text-decoration:underline">info@sanfermoseattle.com</a> ' +
       'and we will add you by hand.';
-    try {
-      const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js');
-      const fs = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js');
-      const auth = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js');
-      const app = initializeApp({
-        apiKey: "AIzaSyDEOMCOO0EH1RV4vogLF4aOWD0e52dsOOI",
-        authDomain: "swan-house-checkin.firebaseapp.com",
-        projectId: "swan-house-checkin",
-        storageBucket: "swan-house-checkin.firebasestorage.app",
-        messagingSenderId: "743743999844",
-        appId: "1:743743999844:web:e124dd6fa5f791f87b7471"
-      }, 'sanfermo-subscribe');
-      try {
-        const ac = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js');
-        ac.initializeAppCheck(app, {
-          provider: new ac.ReCaptchaEnterpriseProvider('6LeCgjAtAAAAABX8x9jbb3tkOXmmQ5UvNZD1RL2_'),
-          isTokenAutoRefreshEnabled: true
-        });
-      } catch (e) { /* non-blocking */ }
-      const db = fs.getFirestore(app);
-      form.addEventListener('submit', async (ev) => {
-        ev.preventDefault();
-        const email = (input.value || '').trim().toLowerCase();
-        if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) {
-          msg.textContent = 'That address does not look right — mind checking it?';
-          return;
-        }
-        btn.disabled = true; msg.textContent = 'One moment…';
-        try {
-          const a = auth.getAuth(app);
-          if (!a.currentUser) await auth.signInAnonymously(a);
-          await fs.addDoc(fs.collection(db, 'subscribers'), {
-            email: email, source: 'sanfermoseattle.com', createdAt: new Date().toISOString()
-          });
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var email = (input.value || '').trim().toLowerCase();
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) {
+        msg.textContent = 'That address does not look right — mind checking it?';
+        return;
+      }
+      btn.disabled = true; msg.textContent = 'One moment…';
+      var body = new FormData();
+      body.append('fields[email]', email);
+      body.append('ml-submit', '1');
+      body.append('anticsrf', 'true');
+      fetch(ML_FORM, { method: 'POST', body: body })
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          if (!j || !j.success) throw new Error('mailerlite said no');
           form.style.display = 'none';
           msg.textContent = "You're on the list. Thanks.";
-        } catch (e) {
+        })
+        .catch(function (e) {
+          // Never claim success we did not get.
           btn.disabled = false; msg.innerHTML = fallback;
           console.error('signup failed:', e);
-        }
-      });
-    } catch (e) {
-      // Never leave a form that looks live but is not.
-      form.addEventListener('submit', (ev) => { ev.preventDefault(); msg.innerHTML = fallback; });
-      console.error('signup init failed:', e);
-    }
+        });
+    });
   })();
   </script>
 
