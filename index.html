@@ -494,7 +494,7 @@
       max-width: 1100px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 2.5rem;
       text-align: center;
     }
@@ -899,6 +899,8 @@
     }
     /* 2026-11-01 photo credit line in the footer (photographers credited per Sam) */
     .photo-credit { opacity: 0.7; text-align: center; padding: 0 1rem; }
+    /* 2026-11-02 Tim notes: reservation button in the top photo */
+    .hero-reserve { display: block; width: max-content; margin: 1.75rem auto 0; }
   </style>
 </head>
 <body>
@@ -913,7 +915,7 @@
       <li><a href="#menu" data-copy="nav.2">Menu</a></li>
       <li><a href="#farm" data-copy="nav.3">The Farm</a></li>
       <li><a href="#faq" data-copy="nav.4">FAQ</a></li>
-      <li><a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" class="nav-cta" data-copy="nav.5">Reserve a Table</a></li>
+      <li><a href="#reservations" class="nav-cta" data-copy="nav.5">Reserve a Table</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
@@ -928,6 +930,7 @@
       <h1><img class="hero-logo" src="images/logo-hero-white.png" alt="San Fermo"></h1>
       <p data-copy="hero.sub">Seattle, Washington</p>
       <span class="hero-hours"><span class="hl" data-copy="hero.hours1">Dinner nightly at 5 PM</span><span class="hsep"> &ensp;|&ensp; </span><span class="hl" data-copy="hero.hours2">Reservations & walk-ins welcome</span></span>
+      <a href="#reservations" class="btn btn-primary hero-reserve" data-copy="hero.btn">Reservations</a>
     </div>
   </section>
 
@@ -935,6 +938,22 @@
   <div class="intro">
     <p data-copy="intro.p1">Family owned and operated since 2016. Regional Italian with locally sourced ingredients from Pacific Northwest farms, ranches, and fisheries.</p>
   </div>
+
+  <!-- RESERVATIONS -->
+  <section class="reservations" id="reservations">
+    <div class="section-inner fade-in">
+      <span class="section-label" data-copy="res.label">Join Us</span>
+      <h2 class="section-heading" data-copy="res.h2">Reserve your table</h2>
+      <p data-copy="res.p1">We offer online reservations through OpenTable for parties up to five. Larger groups of up to ten can be accommodated on weeknight early seatings. We always keep seating back for walk-ins, so if you can't find a reservation, stop by and check with us.</p>
+      <p data-copy="res.p2">When making a reservation, please understand that we can't guarantee a specific table or area of the restaurant.</p>
+      <a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" class="btn btn-primary" data-copy="res.btn1">Book on OpenTable</a>
+      <div class="reservations-extras">
+        <a href="https://direct.chownow.com/order/22475/locations/32679" target="_blank" data-copy="res.btn2">Order To-Go</a>
+        <a href="mailto:info@sanfermoseattle.com?subject=Group%20Reservations" data-copy="res.btn3">Group Inquiries</a>
+        <a href="https://secure.chargeitpro.com/interface/epayform/M4w0CI3OB4AAqRcpl53X3O14zkPxhvSU/" target="_blank" data-copy="res.btn4">Gift Cards</a>
+      </div>
+    </div>
+  </section>
 
   <!-- ABOUT / STORY -->
   <section class="about" id="about">
@@ -961,7 +980,7 @@
         <img src="images/table-spread-1200.jpg" alt="Pasta, prosciutto and a spritz on a San Fermo table" loading="lazy">
       </div>
       <div data-pool-slot="wide" class="gallery-item wide">
-        <img src="images/bar-wide-1920.jpg" alt="Bartender pouring cocktails at San Fermo" loading="lazy">
+        <img src="images/bar-shelves-1600.jpg" alt="The back bar at San Fermo" loading="lazy">
       </div>
       <div data-pool-slot="wide" class="gallery-item wide">
         <img src="images/Fermo3.31.23-56-800.jpg" alt="Fresh pasta being made in the kitchen" loading="lazy">
@@ -1151,7 +1170,7 @@
       <div class="farm-hero-content fade-in">
         <span class="section-label" data-copy="farm.label">Swan House Farm</span>
         <h2 data-copy="farm.h2">From our fields to your table</h2>
-        <p data-copy="farm.p1">34 acres in the Skagit Valley with market gardens, orchards, sheep, hogs, cattle, and poultry. The farm is the backbone of our kitchen and the future of what San Fermo is becoming.</p>
+        <p data-copy="farm.p1">34 acres in the Skagit Valley with market gardens, orchards, and humanely raised livestock. Not every ingredient on our menu comes from our farm, but everything we grow and raise on the farm makes it to the restaurant.</p>
         <a href="https://www.swanhousefarm.com" target="_blank" class="btn btn-outline" data-copy="farm.btn">Visit the Farm</a>
       </div>
     </div>
@@ -1162,28 +1181,9 @@
           <p data-copy="farm.card.p1">Multi-course meals served outdoors on the farm during summer. A family affair with long tables, open fire, and ingredients picked that day.</p>
         </div>
         <div class="farm-detail">
-          <h4 data-copy="farm.card.h2">Private Events</h4>
-          <p data-copy="farm.card.p2">The farm is available for intimate gatherings, celebrations, and corporate retreats. Reach out to discuss what we can put together for you.</p>
-        </div>
-        <div class="farm-detail">
           <h4 data-copy="farm.card.h3">What We Grow</h4>
           <p data-copy="farm.card.p3">Seasonal vegetables, stone fruit, apples, herbs, and flowers. Our animals are raised on pasture and processed on-site or at local facilities.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- RESERVATIONS -->
-  <section class="reservations" id="reservations">
-    <div class="section-inner fade-in">
-      <span class="section-label" data-copy="res.label">Join Us</span>
-      <h2 class="section-heading" data-copy="res.h2">Reserve your table</h2>
-      <p data-copy="res.p1">We offer online reservations through OpenTable for parties up to five. Larger groups of up to ten can be accommodated on weeknight early seatings. We always keep seating back for walk-ins, so if you can't find a reservation, stop by and check with us.</p>
-      <a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" class="btn btn-primary" data-copy="res.btn1">Book on OpenTable</a>
-      <div class="reservations-extras">
-        <a href="https://direct.chownow.com/order/22475/locations/32679" target="_blank" data-copy="res.btn2">Order To-Go</a>
-        <a href="mailto:info@sanfermoseattle.com?subject=Group%20Reservations" data-copy="res.btn3">Group Inquiries</a>
-        <a href="https://secure.chargeitpro.com/interface/epayform/M4w0CI3OB4AAqRcpl53X3O14zkPxhvSU/" target="_blank" data-copy="res.btn4">Gift Cards</a>
       </div>
     </div>
   </section>
