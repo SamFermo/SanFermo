@@ -901,6 +901,16 @@
     .photo-credit { opacity: 0.7; text-align: center; padding: 0 1rem; }
     /* 2026-11-02 Tim notes: reservation button in the top photo */
     .hero-reserve { display: block; width: max-content; margin: 1.75rem auto 0; }
+    /* 2026-11-02 reservation pop-up */
+    .res-modal { position: fixed; inset: 0; margin: auto; height: fit-content; max-height: calc(100% - 32px); overflow: auto; border: 0; border-radius: 6px; padding: 2.5rem 2rem 2rem; max-width: 520px; width: calc(100% - 32px);
+      background: var(--warm-white); color: var(--charcoal); text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,.25); }
+    .res-modal::backdrop { background: rgba(20,20,20,.55); }
+    .res-modal .section-heading { margin-bottom: 1rem; }
+    .res-modal p { color: var(--warm-gray); line-height: 1.7; margin: 0 0 1rem; font-size: .95rem; }
+    .res-modal p a { color: var(--olive-dark); text-decoration: underline; }
+    .res-modal .btn { margin-top: .75rem; }
+    .res-modal-close { position: absolute; top: .5rem; right: .75rem; background: none; border: 0; font-size: 2rem;
+      line-height: 1; color: var(--warm-gray); cursor: pointer; padding: .25rem .5rem; }
   </style>
 </head>
 <body>
@@ -915,7 +925,7 @@
       <li><a href="#menu" data-copy="nav.2">Menu</a></li>
       <li><a href="#farm" data-copy="nav.3">The Farm</a></li>
       <li><a href="#faq" data-copy="nav.4">FAQ</a></li>
-      <li><a href="#reservations" class="nav-cta" data-copy="nav.5">Reserve a Table</a></li>
+      <li><a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" class="nav-cta" data-reserve data-copy="nav.5">Reserve a Table</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
@@ -930,7 +940,7 @@
       <h1><img class="hero-logo" src="images/logo-hero-white.png" alt="San Fermo"></h1>
       <p data-copy="hero.sub">Seattle, Washington</p>
       <span class="hero-hours"><span class="hl" data-copy="hero.hours1">Dinner nightly at 5 PM</span><span class="hsep"> &ensp;|&ensp; </span><span class="hl" data-copy="hero.hours2">Reservations & walk-ins welcome</span></span>
-      <a href="#reservations" class="btn btn-primary hero-reserve" data-copy="hero.btn">Reservations</a>
+      <a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" class="btn btn-primary hero-reserve" data-reserve data-copy="hero.btn">Reservations</a>
     </div>
   </section>
 
@@ -938,22 +948,6 @@
   <div class="intro">
     <p data-copy="intro.p1">Family owned and operated since 2016. Regional Italian with locally sourced ingredients from Pacific Northwest farms, ranches, and fisheries.</p>
   </div>
-
-  <!-- RESERVATIONS -->
-  <section class="reservations" id="reservations">
-    <div class="section-inner fade-in">
-      <span class="section-label" data-copy="res.label">Join Us</span>
-      <h2 class="section-heading" data-copy="res.h2">Reserve your table</h2>
-      <p data-copy="res.p1">We offer online reservations through OpenTable for parties up to five. Larger groups of up to ten can be accommodated on weeknight early seatings. We always keep seating back for walk-ins, so if you can't find a reservation, stop by and check with us.</p>
-      <p data-copy="res.p2">When making a reservation, please understand that we can't guarantee a specific table or area of the restaurant.</p>
-      <a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" class="btn btn-primary" data-copy="res.btn1">Book on OpenTable</a>
-      <div class="reservations-extras">
-        <a href="https://direct.chownow.com/order/22475/locations/32679" target="_blank" data-copy="res.btn2">Order To-Go</a>
-        <a href="mailto:info@sanfermoseattle.com?subject=Group%20Reservations" data-copy="res.btn3">Group Inquiries</a>
-        <a href="https://secure.chargeitpro.com/interface/epayform/M4w0CI3OB4AAqRcpl53X3O14zkPxhvSU/" target="_blank" data-copy="res.btn4">Gift Cards</a>
-      </div>
-    </div>
-  </section>
 
   <!-- ABOUT / STORY -->
   <section class="about" id="about">
@@ -1188,6 +1182,22 @@
     </div>
   </section>
 
+  <!-- RESERVATIONS -->
+  <section class="reservations" id="reservations">
+    <div class="section-inner fade-in">
+      <span class="section-label" data-copy="res.label">Join Us</span>
+      <h2 class="section-heading" data-copy="res.h2">Reserve your table</h2>
+      <p data-copy="res.p1">We offer online reservations through OpenTable for parties up to five. Larger groups of up to ten can be accommodated on weeknight early seatings. We always keep seating back for walk-ins, so if you can't find a reservation, stop by and check with us.</p>
+      <p data-copy="res.p2">When making a reservation, please understand that we can't guarantee a specific table or area of the restaurant.</p>
+      <a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" class="btn btn-primary" data-copy="res.btn1">Book on OpenTable</a>
+      <div class="reservations-extras">
+        <a href="https://direct.chownow.com/order/22475/locations/32679" target="_blank" data-copy="res.btn2">Order To-Go</a>
+        <a href="mailto:info@sanfermoseattle.com?subject=Group%20Reservations" data-copy="res.btn3">Group Inquiries</a>
+        <a href="https://secure.chargeitpro.com/interface/epayform/M4w0CI3OB4AAqRcpl53X3O14zkPxhvSU/" target="_blank" data-copy="res.btn4">Gift Cards</a>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="faq" id="faq">
     <div class="section-inner">
@@ -1248,6 +1258,31 @@
     </form>
     <div class="newsletter-msg" id="signupMsg" role="status" aria-live="polite"></div>
   </div>
+
+
+  <!-- RESERVATION POP-UP (2026-11-02, Tim's notes): the Reservations buttons open this first,
+       so guests read the rules before OpenTable. Text blocks are editable like the rest. -->
+  <dialog class="res-modal" id="resModal" aria-labelledby="resModalTitle">
+    <button type="button" class="res-modal-close" id="resModalClose" aria-label="Close">&times;</button>
+    <h2 class="section-heading" id="resModalTitle" data-copy="resmodal.h2">Reservations</h2>
+    <p data-copy="resmodal.p1">We offer online reservations through OpenTable for up to 5 guests. Larger parties of up to 10 can be reserved Monday through Thursday at 5 o'clock by <a href="mailto:info@sanfermoseattle.com?subject=Group%20Reservations">emailing the restaurant</a>.</p>
+    <p data-copy="resmodal.p2">When making a reservation, please understand that we can't guarantee a specific table or area of the restaurant. We always keep seating back for walk-ins, so if you can't find a reservation, stop by and check with us.</p>
+    <a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" rel="noopener" class="btn btn-primary" data-copy="resmodal.btn">Reserve your table</a>
+  </dialog>
+  <script>
+  (function () {
+    var d = document.getElementById('resModal');
+    if (!d || typeof d.showModal !== 'function') return;   // old browsers: the buttons go straight to OpenTable
+    document.querySelectorAll('[data-reserve]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        if (document.body.classList.contains('se-on')) return;   // edit mode: leave clicks to the editor
+        e.preventDefault(); d.showModal();
+      });
+    });
+    document.getElementById('resModalClose').addEventListener('click', function () { d.close(); });
+    d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
+  })();
+  </script>
 
   <!-- FOOTER -->
   <footer>
