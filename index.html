@@ -11,14 +11,14 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.sanfermoseattle.com/">
   <link rel="canonical" href="https://www.sanfermoseattle.com/">
-  <meta property="og:image" content="https://www.sanfermoseattle.com/images/patio-hero-1920.jpg">
+  <meta property="og:image" content="https://www.sanfermoseattle.com/images/hero-front-1920.jpg">
   <meta property="og:site_name" content="San Fermo">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "Restaurant", "name": "San Fermo", "url": "https://www.sanfermoseattle.com/", "image": "https://www.sanfermoseattle.com/images/patio-hero-1920.jpg", "telephone": "+1-206-387-0786", "email": "info@sanfermoseattle.com", "servesCuisine": "Italian", "priceRange": "$$$", "address": {"@type": "PostalAddress", "streetAddress": "5341 Ballard Ave NW", "addressLocality": "Seattle", "addressRegion": "WA", "postalCode": "98107", "addressCountry": "US"}, "acceptsReservations": "https://www.opentable.com/restref/client/?restref=209479&lang=en-US", "menu": "https://www.sanfermoseattle.com/#menu", "sameAs": ["https://www.instagram.com/sanfermoseattle"]}
+  {"@context": "https://schema.org", "@type": "Restaurant", "name": "San Fermo", "url": "https://www.sanfermoseattle.com/", "image": "https://www.sanfermoseattle.com/images/hero-front-1920.jpg", "telephone": "+1-206-387-0786", "email": "info@sanfermoseattle.com", "servesCuisine": "Italian", "priceRange": "$$$", "address": {"@type": "PostalAddress", "streetAddress": "5341 Ballard Ave NW", "addressLocality": "Seattle", "addressRegion": "WA", "postalCode": "98107", "addressCountry": "US"}, "acceptsReservations": "https://www.opentable.com/restref/client/?restref=209479&lang=en-US", "menu": "https://www.sanfermoseattle.com/#menu", "sameAs": ["https://www.instagram.com/sanfermoseattle"]}
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -184,7 +184,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('images/patio-hero-1920.jpg');
+      background-image: url('images/hero-front-1920.jpg');
       background-size: cover;
       background-position: center;
     }
@@ -897,6 +897,8 @@
       .hero-content .hsep { display: none; }
       .hero-content .hl { display: block; line-height: 1.7; }
     }
+    /* 2026-11-01 photo credit line in the footer (photographers credited per Sam) */
+    .photo-credit { opacity: 0.7; text-align: center; padding: 0 1rem; }
   </style>
 </head>
 <body>
@@ -939,7 +941,7 @@
     <div class="section-inner">
       <div class="about-grid">
         <div class="about-image fade-in">
-          <img src="images/Fermo3.31.23-35-800.jpg" alt="Chef at San Fermo">
+          <img src="images/about-sam-1600.jpg" alt="Sam West at the pass in the San Fermo kitchen">
         </div>
         <div class="about-text fade-in">
           <span class="section-label" data-copy="about.label">Our Story</span>
@@ -956,7 +958,7 @@
   <div class="gallery">
     <div class="gallery-grid fade-in">
       <div data-pool-slot="std" class="gallery-item">
-        <img src="images/Fermo3.31.23-52-800.jpg" alt="Grating fresh cheese over ravioli" loading="lazy">
+        <img src="images/table-spread-1200.jpg" alt="Pasta, prosciutto and a spritz on a San Fermo table" loading="lazy">
       </div>
       <div data-pool-slot="wide" class="gallery-item wide">
         <img src="images/bar-wide-1920.jpg" alt="Bartender pouring cocktails at San Fermo" loading="lazy">
@@ -1268,6 +1270,7 @@
     </div>
     <div class="footer-bottom">
       <span id="siteEditEntry">&copy; <span id="copyYear">2026</span> San Fermo</span>
+      <span class="photo-credit" data-copy="foot.photos">Photography by Suzi Pratt, Nate Johnston, Megan Haley, Andrea Petruccelli and Abby Tornquist</span>
       <div class="footer-social">
         <a href="https://www.instagram.com/sanfermoseattle" target="_blank" data-copy="foot.instagram">Instagram</a>
       </div>
