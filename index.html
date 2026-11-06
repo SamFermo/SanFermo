@@ -871,13 +871,13 @@
     }
 
     /* ── ANIMATIONS ── */
-    .fade-in {
+    .js-anim .fade-in {
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
-    .fade-in.visible {
+    .js-anim .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
@@ -898,7 +898,7 @@
       .hero-content .hl { display: block; line-height: 1.7; }
     }
     /* 2026-11-01 photo credit line in the footer (photographers credited per Sam) */
-    .photo-credit { opacity: 0.7; text-align: center; padding: 0 1rem; }
+    .photo-credit { opacity: 1; text-align: center; padding: 0 1rem; font-size: 0.8rem; color: rgba(255,255,255,0.72); }
     /* 2026-11-02 Tim notes: reservation button in the top photo */
     .hero-reserve { display: block; width: max-content; margin: 1.75rem auto 0; }
     /* 2026-11-02 reservation pop-up */
@@ -911,7 +911,44 @@
     .res-modal .btn { margin-top: .75rem; }
     .res-modal-close { position: absolute; top: .5rem; right: .75rem; background: none; border: 0; font-size: 2rem;
       line-height: 1; color: var(--warm-gray); cursor: pointer; padding: .25rem .5rem; }
+    /* ── 2026-11-06 Odo review fixes ── */
+    /* Footer easier to read on a phone */
+    footer { color: rgba(255,255,255,0.75); }
+    .footer-col p, .footer-col a { color: rgba(255,255,255,0.8); }
+    .footer-col h4 { color: rgba(255,255,255,0.6); }
+    .footer-social a { color: rgba(255,255,255,0.7); }
+    /* "See the menu" under the Reservations button */
+    .hero-menu-link { display: block; width: max-content; margin: 1.1rem auto 0; color: #fff; font-family: var(--font-sans);
+      font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: underline;
+      text-underline-offset: 5px; text-decoration-thickness: 1px; opacity: 0.92; padding: 0.4rem 0.5rem; }
+    .hero-menu-link:hover { opacity: 1; }
+    /* Order to-go and gift cards: in the phone menu only (the desktop bar stays as it was) */
+    .nav-links .nav-mobile-only { display: none; }
+    @media (max-width: 768px) { .nav-links.open .nav-mobile-only { display: list-item; } }
+    /* Hamburger stays visible on the light open menu */
+    .nav-toggle[aria-expanded="true"] span { background: var(--charcoal) !important; }
+    /* Collapsed FAQ answers are out of the tab order and hidden from screen readers (edit mode excepted) */
+    body:not(.se-on) .faq-item:not(.open) .faq-answer { visibility: hidden; transition: max-height 0.4s ease, padding 0.4s ease, visibility 0s linear 0.4s; }
+    /* Note shown only if the live menu could not be loaded */
+    .menu-live-note { max-width: 640px; margin: 2rem auto 0; text-align: center; font-family: var(--font-sans);
+      font-size: 0.85rem; font-style: italic; color: var(--warm-gray); }
+    /* Smaller photos for phones */
+    @media (max-width: 768px) {
+      .hero-bg { background-image: url('images/hero-front-phone.jpg'); }
+      .farm-hero-bg { background-image: url('images/dinner-hero-phone.jpg'); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .js-anim .fade-in { opacity: 1; transform: none; transition: none; }
+      .gallery-item img, .hero-overlay { transition: none !important; }
+    }
   </style>
+  <script>
+    /* 2026-11-06 (Odo review): sections only start hidden for the fade-in once this flag is set,
+       and the flag comes off again if the fade-in script never confirms it is running.
+       No JavaScript, a script error or no IntersectionObserver = everything simply visible. */
+    document.documentElement.classList.add('js-anim');
+    setTimeout(function () { if (!window.__fadeReady) document.documentElement.classList.remove('js-anim'); }, 4000);
+  </script>
 </head>
 <body>
 
@@ -925,9 +962,11 @@
       <li><a href="#menu" data-copy="nav.2">Menu</a></li>
       <li><a href="#farm" data-copy="nav.3">The Farm</a></li>
       <li><a href="#faq" data-copy="nav.4">FAQ</a></li>
+      <li class="nav-mobile-only"><a href="https://direct.chownow.com/order/22475/locations/32679" target="_blank" rel="noopener" data-copy="nav.6">Order To-Go</a></li>
+      <li class="nav-mobile-only"><a href="https://secure.chargeitpro.com/interface/epayform/M4w0CI3OB4AAqRcpl53X3O14zkPxhvSU/" target="_blank" rel="noopener" data-copy="nav.7">Gift Cards</a></li>
       <li><a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" class="nav-cta" data-reserve data-copy="nav.5">Reserve a Table</a></li>
     </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -941,6 +980,7 @@
       <p data-copy="hero.sub">Seattle, Washington</p>
       <span class="hero-hours"><span class="hl" data-copy="hero.hours1">Dinner nightly at 5 PM</span><span class="hsep"> &ensp;|&ensp; </span><span class="hl" data-copy="hero.hours2">Reservations & walk-ins welcome</span></span>
       <a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" class="btn btn-primary hero-reserve" data-reserve data-copy="hero.btn">Reservations</a>
+      <a href="#menu" class="hero-menu-link" data-copy="hero.menu">See the menu</a>
     </div>
   </section>
 
@@ -993,6 +1033,7 @@
         <h2 class="section-heading" data-copy="menu.h2">What we're cooking</h2>
         <p data-copy="menu.p1">We offer a small menu that changes daily. The chef requests that you put your whole order in at once. This is our current menu, published straight from the kitchen.</p>
       </div>
+      <p class="menu-live-note" id="menuLiveNote" role="status" hidden></p>
       <div class="menu-grid fade-in" id="menuGrid">
         <!-- Fallback only: matches the menu published from the staff portal 2026-10-17 (refreshed 2026-10-20). The live menu replaces this on load. -->
         <div class="menu-category">
@@ -1325,20 +1366,42 @@
     // Mobile nav toggle
     const toggle = document.getElementById('navToggle');
     const links = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => {
-      links.classList.toggle('open');
-    });
+    // 2026-11-06 (Odo review): the open/closed state is announced, Escape closes the menu and
+    // focus goes into the menu and back to the button, so it works without a mouse or with a screen reader.
+    function setMenu(open, refocus) {
+      links.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) { const first = links.querySelector('a'); if (first) first.focus({ preventScroll: true }); }
+      else if (refocus) toggle.focus();
+    }
+    toggle.addEventListener('click', () => setMenu(!links.classList.contains('open'), false));
     links.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => links.classList.remove('open'));
+      a.addEventListener('click', () => setMenu(false, false));
+    });
+    document.addEventListener('keydown', (e) => {
+      if (!links.classList.contains('open')) return;
+      if (e.key === 'Escape') { setMenu(false, true); return; }
+      if (e.key === 'Tab') {   // keep Tab inside the open menu: the links, then the close button (DOM order)
+        const items = Array.from(links.querySelectorAll('a')).filter(a => a.offsetParent !== null).concat([toggle]);
+        const i = items.indexOf(document.activeElement);
+        if (e.shiftKey && i <= 0) { e.preventDefault(); items[items.length - 1].focus(); }
+        else if (!e.shiftKey && i === items.length - 1) { e.preventDefault(); items[0].focus(); }
+      }
     });
 
     // FAQ accordion
-    document.querySelectorAll('.faq-question').forEach(btn => {
+    document.querySelectorAll('.faq-question').forEach((btn, n) => {
+      const ans = btn.parentElement.querySelector('.faq-answer');
+      if (ans) { ans.id = ans.id || ('faq-a-' + (n + 1)); btn.setAttribute('aria-controls', ans.id); }
+      btn.setAttribute('aria-expanded', 'false');
       btn.addEventListener('click', () => {
         const item = btn.parentElement;
         const wasOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!wasOpen) item.classList.add('open');
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          const q = i.querySelector('.faq-question'); if (q) q.setAttribute('aria-expanded', 'false');
+        });
+        if (!wasOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
       });
     });
 
@@ -1352,6 +1415,7 @@
     }, { threshold: 0.15 });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    window.__fadeReady = true;   // tells the safety net in <head> the fade-in is running
   </script>
 
   <!-- ── LIVE MENU ──────────────────────────────────────────────────────────────
@@ -1389,7 +1453,7 @@
 
     function render(d){
       var grid = document.getElementById('menuGrid');
-      if(!grid || !d || !d.sections || !d.sections.length) return;
+      if(!grid || !d || !d.sections || !d.sections.length) return false;
       var h = '';
       d.sections.forEach(function(sec){
         if(!sec.items || !sec.items.length) return;
@@ -1407,11 +1471,12 @@
       });
       // Only swap if we actually built something. A published-but-empty doc must
       // not wipe the fallback menu off the page.
-      if(h) grid.innerHTML = h;
+      if(h){ grid.innerHTML = h; window.__menuLive = true; }
+      return !!h;
     }
 
     try{
-      if(!window.firebase) return;
+      if(!window.firebase){ stale(); return; }
       var app = firebase.initializeApp(CFG, 'sanfermo-site');
       var db  = app.firestore();
       var ref = db.collection('menu-public').doc('current');
@@ -1420,15 +1485,24 @@
       // works with no sign-in at all, which keeps the site working on any domain
       // regardless of the Firebase Auth authorized-domains list — one less thing
       // to remember at DNS cutover. Anonymous auth is only the fallback.
+      // 2026-11-06 (Odo review): if the live menu can't be read, the baked menu stays (as before)
+      // but the guest is told it may not be tonight's, instead of the page quietly calling it current.
+      function shown(doc){ if(doc && doc.exists && render(doc.data())) return; stale(); }
       ref.get()
-        .then(function(doc){ if(doc.exists) render(doc.data()); })
+        .then(shown)
         .catch(function(){
           firebase.auth(app).signInAnonymously()
             .then(function(){ return ref.get(); })
-            .then(function(doc){ if(doc.exists) render(doc.data()); })
-            .catch(function(){ /* keep the baked-in menu */ });
+            .then(shown)
+            .catch(stale);
         });
-    }catch(e){ /* keep the baked-in menu */ }
+    }catch(e){ stale(); }
+
+    function stale(){
+      window.__menuLive = false;
+      var n = document.getElementById('menuLiveNote');
+      if(n){ n.textContent = "We couldn't load tonight's menu just now, so this is a recent one. Dishes change daily."; n.hidden = false; }
+    }
   })();
   </script>
 
@@ -1468,6 +1542,7 @@
           if (!j || !j.success) throw new Error('mailerlite said no');
           form.style.display = 'none';
           msg.textContent = "You're on the list. Thanks.";
+          document.dispatchEvent(new CustomEvent('signup:ok'));
         })
         .catch(function (e) {
           // Never claim success we did not get.
@@ -1668,10 +1743,8 @@
     var a = e.target && e.target.closest && e.target.closest('a[href], [data-reserve]');
     if (a) count(kind(a));
   }, true);
-  var form = document.getElementById('signupForm');
-  if (form) form.addEventListener('submit', function () {
-    var i = form.querySelector('input[type="email"], input'); if (i && /@/.test(i.value || '')) count('signup');
-  }, true);
+  // 2026-11-06 (Odo review): a sign-up counts only once MailerLite has actually accepted it.
+  document.addEventListener('signup:ok', function () { count('signup'); });
   document.addEventListener('sitecopy:loaded', async function () {
     try {
       var app = window.__siteCopyApp; if (!app) return;
