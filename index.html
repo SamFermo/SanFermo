@@ -908,7 +908,9 @@
     .res-modal .section-heading { margin-bottom: 1rem; }
     .res-modal p { color: var(--warm-gray); line-height: 1.7; margin: 0 0 1rem; font-size: .95rem; }
     .res-modal p a { color: var(--olive-dark); text-decoration: underline; }
-    .res-modal .btn { margin-top: .75rem; }
+    .res-modal .btn { margin: .25rem 0 1.5rem; }
+    .res-modal { text-align: center; }
+    .res-modal p.res-modal-rule { border-top: 1px solid rgba(0,0,0,.12); padding-top: 1.25rem; }
     .res-modal-close { position: absolute; top: .5rem; right: .75rem; background: none; border: 0; font-size: 2rem;
       line-height: 1; color: var(--warm-gray); cursor: pointer; padding: .25rem .5rem; }
     /* ── 2026-11-06 Odo review fixes ── */
@@ -1306,9 +1308,11 @@
   <dialog class="res-modal" id="resModal" aria-labelledby="resModalTitle">
     <button type="button" class="res-modal-close" id="resModalClose" aria-label="Close">&times;</button>
     <h2 class="section-heading" id="resModalTitle" data-copy="resmodal.h2">Reservations</h2>
-    <p data-copy="resmodal.p1">We offer online reservations through OpenTable for up to 5 guests. Larger parties of up to 10 can be reserved Monday through Thursday at 5 o'clock by <a href="mailto:info@sanfermoseattle.com?subject=Group%20Reservations">emailing the restaurant</a>.</p>
-    <p data-copy="resmodal.p2">When making a reservation, please understand that we can't guarantee a specific table or area of the restaurant. We always keep seating back for walk-ins, so if you can't find a reservation, stop by and check with us.</p>
+    <p data-copy="resmodal.p1">We offer online reservations through OpenTable. Click below to book your evening with us. We also offer walk-in dining nightly, so if you can't find a reservation, please stop by.</p>
     <a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" rel="noopener" class="btn btn-primary" data-copy="resmodal.btn">Reserve your table</a>
+    <p class="res-modal-rule" data-copy="resmodal.seat"><b>Seating requests</b> - Please understand that we do not reserve specific tables or areas of the restaurant. All of our guests are offered a choice of tables on arrival.</p>
+    <p data-copy="resmodal.group"><b>Group dining</b> - Online reservations are available for parties up to five. We can seat larger groups Monday through Thursday with 5pm reservations. Please email <a href="mailto:info@sanfermoseattle.com?subject=Group%20Reservations">info@sanfermoseattle.com</a> to book a group reservation.</p>
+    <p data-copy="resmodal.faq">For all other questions, see our <a href="#faq" data-close-modal>FAQ</a>.</p>
   </dialog>
   <script>
   (function () {
@@ -1321,6 +1325,7 @@
       });
     });
     document.getElementById('resModalClose').addEventListener('click', function () { d.close(); });
+    d.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-close-modal]')) d.close(); });
     d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
   })();
   </script>
