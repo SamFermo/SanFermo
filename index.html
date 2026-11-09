@@ -1561,7 +1561,7 @@
 <!-- ── SITE-COPY READER v1 ──────────────────────────────────────────────────────
      The words on this page can be edited in place by the family (footer, tap the
      copyright line five times, or add ?edit to the address). Edits are published to
-     Firestore site-copy/<site> in swan-house-checkin and this block overlays them on
+     Firestore site-copy/<site> in sanfermo-websites (split from swan-house-checkin 2026-11-08) and this block overlays them on
      load. The HTML above is the fallback and must stay current-ish: the nightly push
      bakes the published copy back into it.
 
@@ -1573,14 +1573,16 @@
   window.SITE = 'sanfermo';
   window.SITE_NAME = 'San Fermo';
   window.SITE_CFG = {
-    apiKey: "AIzaSyDEOMCOO0EH1RV4vogLF4aOWD0e52dsOOI",
-    authDomain: "swan-house-checkin.firebaseapp.com",
-    projectId: "swan-house-checkin",
-    storageBucket: "swan-house-checkin.firebasestorage.app",
-    messagingSenderId: "743743999844",
-    appId: "1:743743999844:web:e124dd6fa5f791f87b7471"
+    apiKey: "AIzaSyCLy6F9DQCUb9jc3AC-VWlSvgAlnQFUMIM",
+    authDomain: "sanfermo-websites.firebaseapp.com",
+    projectId: "sanfermo-websites",
+    storageBucket: "sanfermo-websites.firebasestorage.app",
+    messagingSenderId: "1077584217667",
+    appId: "1:1077584217667:web:0216d61212179d583676f6"
   };
-  window.SITE_APPCHECK_KEY = '6LeCgjAtAAAAABX8x9jbb3tkOXmmQ5UvNZD1RL2_';
+  // 2026-11-08: website data moved to its own project (sanfermo-websites), which has no App Check;
+  // the security rules do the protecting. Set a key here only if App Check is turned on there.
+  window.SITE_APPCHECK_KEY = null;
   // localhost is not on the reCAPTCHA key; a registered debug token lets local tests run.
   if (location.hostname === 'localhost') self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
 </script>
@@ -1642,7 +1644,7 @@
     const app = initializeApp(window.SITE_CFG, window.SITE + '-copy');
     try {
       const ac = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check.js');
-      ac.initializeAppCheck(app, {
+      if (window.SITE_APPCHECK_KEY) ac.initializeAppCheck(app, {
         provider: new ac.ReCaptchaEnterpriseProvider(window.SITE_APPCHECK_KEY),
         isTokenAutoRefreshEnabled: true
       });
