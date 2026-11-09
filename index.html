@@ -965,7 +965,7 @@
       <li><a href="#farm" data-copy="nav.3">The Farm</a></li>
       <li><a href="#faq" data-copy="nav.4">FAQ</a></li>
       <li class="nav-mobile-only"><a href="https://direct.chownow.com/order/22475/locations/32679" target="_blank" rel="noopener" data-copy="nav.6">Order To-Go</a></li>
-      <li class="nav-mobile-only"><a href="https://secure.chargeitpro.com/interface/epayform/M4w0CI3OB4AAqRcpl53X3O14zkPxhvSU/" target="_blank" rel="noopener" data-copy="nav.7">Gift Cards</a></li>
+      <li class="nav-mobile-only"><a href="https://gateway.gravitylink.net/interface/epayform/V0tZLcVX9e2qMGpyQG74S0sFsVUQ2zVw/" target="_blank" rel="noopener" data-copy="nav.7">Gift Cards</a></li>
       <li><a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" class="nav-cta" data-reserve data-copy="nav.5">Reserve a Table</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">
@@ -1236,7 +1236,7 @@
       <div class="reservations-extras">
         <a href="https://direct.chownow.com/order/22475/locations/32679" target="_blank" data-copy="res.btn2">Order To-Go</a>
         <a href="mailto:info@sanfermoseattle.com?subject=Group%20Reservations" data-copy="res.btn3">Group Inquiries</a>
-        <a href="https://secure.chargeitpro.com/interface/epayform/M4w0CI3OB4AAqRcpl53X3O14zkPxhvSU/" target="_blank" data-copy="res.btn4">Gift Cards</a>
+        <a href="https://gateway.gravitylink.net/interface/epayform/V0tZLcVX9e2qMGpyQG74S0sFsVUQ2zVw/" target="_blank" data-copy="res.btn4">Gift Cards</a>
       </div>
     </div>
   </section>
@@ -1734,7 +1734,8 @@
     var h = a.getAttribute('href') || '';
     if (/opentable\.com/i.test(h)) return 'opentable';
     if (/chownow\.com/i.test(h)) return 'order';
-    if (/chargeitpro\.com/i.test(h)) return 'giftcards';
+    // 2026-11-09: new gift card form lives on gravitylink.net too, so match its key before the tickets rule.
+    if (/chargeitpro\.com|V0tZLcVX9e2qMGpyQG74S0sFsVUQ2zVw/i.test(h)) return 'giftcards';
     if (/gravitylink\.net/i.test(h)) return 'tickets';
     if (/^mailto:/i.test(h)) return 'email';
     if (/^tel:/i.test(h)) return 'call';
