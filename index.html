@@ -943,7 +943,9 @@
       .js-anim .fade-in { opacity: 1; transform: none; transition: none; }
       .gallery-item img, .hero-overlay { transition: none !important; }
     }
-  </style>
+    /* 2026-11-20: nav "Join the List" jumps here; keep the box clear of the fixed nav bar. */
+  #signup{scroll-margin-top:90px}
+</style>
   <script>
     /* 2026-11-06 (Odo review): sections only start hidden for the fade-in once this flag is set,
        and the flag comes off again if the fade-in script never confirms it is running.
@@ -964,6 +966,7 @@
       <li><a href="#menu" data-copy="nav.2">Menu</a></li>
       <li><a href="#farm" data-copy="nav.3">The Farm</a></li>
       <li><a href="#faq" data-copy="nav.4">FAQ</a></li>
+      <li><a href="#signup" data-copy="nav.8">Join the List</a></li>
       <li class="nav-mobile-only"><a href="https://direct.chownow.com/order/22475/locations/32679" target="_blank" rel="noopener" data-copy="nav.6">Order To-Go</a></li>
       <li class="nav-mobile-only"><a href="https://gateway.gravitylink.net/interface/epayform/V0tZLcVX9e2qMGpyQG74S0sFsVUQ2zVw/" target="_blank" rel="noopener" data-copy="nav.7">Gift Cards</a></li>
       <li><a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" class="nav-cta" data-reserve data-copy="nav.5">Reserve a Table</a></li>
@@ -1289,8 +1292,8 @@
     </div>
   </section>
 
-  <!-- NEWSLETTER -->
-  <div class="newsletter">
+  <!-- NEWSLETTER (id="signup" is the nav target, added 2026-11-20 for the NYE post) -->
+  <div class="newsletter" id="signup">
     <h3 data-copy="news.h3">Stay in the loop</h3>
     <p data-copy="news.p1">News from the restaurant and farm, seasonal menus, and event announcements.</p>
     <!-- Posts to MailerLite (one list for both sites). Script is near the end of the page.
