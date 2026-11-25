@@ -945,6 +945,19 @@
     }
     /* 2026-11-20: nav "Join the List" jumps here; keep the box clear of the fixed nav bar. */
   #signup{scroll-margin-top:90px}
+    /* 2026-11-24: Gift Cards joined the top bar; tighten the bar on narrow laptops and tablets so it stays one line */
+    @media (min-width: 769px) and (max-width: 1100px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { gap: 1.1rem; }
+      .nav-links a { letter-spacing: 0.06em; }
+      .nav-cta { padding: 0.55rem 0.9rem; }
+    }
+    .nav-cta { white-space: nowrap; }   /* Odo 2026-11-24: Reserve a Table no longer wraps out of its box */
+    /* 2026-11-24: sign-up box fits narrow phones (the Subscribe button hung off the edge below ~390px) */
+    .newsletter-form input { min-width: 0; }
+    @media (max-width: 420px) { .newsletter-form button { padding: 0.85rem 1rem; } }
+    /* 2026-11-24: FAQ links in the house green instead of browser blue */
+    .faq-answer a { color: var(--olive-dark); text-decoration: underline; text-underline-offset: 2px; }
 </style>
   <script>
     /* 2026-11-06 (Odo review): sections only start hidden for the fade-in once this flag is set,
@@ -968,7 +981,7 @@
       <li><a href="#faq" data-copy="nav.4">FAQ</a></li>
       <li><a href="#signup" data-copy="nav.8">Join the List</a></li>
       <li class="nav-mobile-only"><a href="https://direct.chownow.com/order/22475/locations/32679" target="_blank" rel="noopener" data-copy="nav.6">Order To-Go</a></li>
-      <li class="nav-mobile-only"><a href="https://gateway.gravitylink.net/interface/epayform/V0tZLcVX9e2qMGpyQG74S0sFsVUQ2zVw/" target="_blank" rel="noopener" data-copy="nav.7">Gift Cards</a></li>
+      <li><a href="#giftcards" data-giftcard data-copy="nav.7">Gift Cards</a></li>
       <li><a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" class="nav-cta" data-reserve data-copy="nav.5">Reserve a Table</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">
@@ -1239,7 +1252,7 @@
       <div class="reservations-extras">
         <a href="https://direct.chownow.com/order/22475/locations/32679" target="_blank" data-copy="res.btn2">Order To-Go</a>
         <a href="mailto:info@sanfermoseattle.com?subject=Group%20Reservations" data-copy="res.btn3">Group Inquiries</a>
-        <a href="https://gateway.gravitylink.net/interface/epayform/V0tZLcVX9e2qMGpyQG74S0sFsVUQ2zVw/" target="_blank" data-copy="res.btn4">Gift Cards</a>
+        <a href="#giftcards" data-giftcard data-copy="res.btn4">Gift Cards</a>
       </div>
     </div>
   </section>
@@ -1268,9 +1281,9 @@
           <button class="faq-question" data-copy="faq.q4">Multiple bookings</button>
           <div class="faq-answer" data-copy="faq.a4">To keep availability open for everyone, we limit reservations to one hold over any two-week period. If you're planning to visit more than once, please <a href="mailto:info@sanfermoseattle.com?subject=Multiple%20Reservations">email us</a> to book.</div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item" id="giftcards">
           <button class="faq-question" data-copy="faq.q5">Gift cards</button>
-          <div class="faq-answer" data-copy="faq.a5">Choose your amount and fill out the online form. We mail gift cards directly to the purchaser or the recipient — <strong>we don't offer electronic gift cards</strong>, so please allow time for post. If you'd like to give a farm dinner experience instead, <a href="mailto:info@sanfermoseattle.com?subject=San%20Fermo%20farm%20dinner%20gift%20certificate">get in touch</a> and we'll sort it out.</div>
+          <div class="faq-answer" data-copy="faq.a5">Choose your amount and fill out the <a href="https://gateway.gravitylink.net/interface/epayform/V0tZLcVX9e2qMGpyQG74S0sFsVUQ2zVw/" target="_blank" rel="noopener">online gift card form</a>. We mail gift cards directly to the purchaser or the recipient — <strong>we don't offer electronic gift cards</strong>, so please allow time for the mail.</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" data-copy="faq.q6">Dining with children</button>
@@ -1329,6 +1342,38 @@
     });
     document.getElementById('resModalClose').addEventListener('click', function () { d.close(); });
     d.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('[data-close-modal]')) d.close(); });
+    d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
+  })();
+  </script>
+
+  <!-- GIFT CARD POP-UP (2026-11-24, Dad's ask after a guest couldn't find the form): Gift Cards in the
+       nav and the Reservations section open this, so guests read that cards are mailed before the form.
+       Text blocks are editable like the rest. The gift card form address lives on the button below
+       and in the FAQ answer; change both when Gravity issues a new link. -->
+  <dialog class="res-modal" id="giftModal" aria-labelledby="giftModalTitle">
+    <button type="button" class="res-modal-close" id="giftModalClose" aria-label="Close">&times;</button>
+    <h2 class="section-heading" id="giftModalTitle" data-copy="giftmodal.h2">Gift Cards</h2>
+    <p data-copy="giftmodal.p1">Choose your amount and fill out the online form. We mail gift cards directly to the purchaser or the recipient.</p>
+    <p data-copy="giftmodal.p2">We don't offer electronic gift cards, so please allow time for the mail.</p>
+    <a href="https://gateway.gravitylink.net/interface/epayform/V0tZLcVX9e2qMGpyQG74S0sFsVUQ2zVw/" target="_blank" rel="noopener" class="btn btn-primary" id="giftModalBuy" data-copy="giftmodal.btn">Buy a gift card</a>
+  </dialog>
+  <script>
+  (function () {
+    var d = document.getElementById('giftModal');
+    var openers = document.querySelectorAll('[data-giftcard]');
+    var form = document.getElementById('giftModalBuy');
+    if (!d || typeof d.showModal !== 'function') {   // old browsers: the links go straight to the form
+      openers.forEach(function (a) { if (form) { a.href = form.href; a.target = '_blank'; a.rel = 'noopener'; } });
+      return;
+    }
+    openers.forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        if (document.body.classList.contains('se-on')) return;   // edit mode: leave clicks to the editor
+        e.preventDefault(); d.showModal();
+      });
+    });
+    document.getElementById('giftModalClose').addEventListener('click', function () { d.close(); });
+    if (form) form.addEventListener('click', function () { d.close(); });
     d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
   })();
   </script>
