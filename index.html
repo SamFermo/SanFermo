@@ -403,6 +403,17 @@
       color: var(--charcoal);
     }
 
+    /* 2026-11-25: prices from the portal's published menu, right of the dish name */
+    .menu-item-price {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-left: 1rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
     .menu-item-desc {
       font-family: var(--font-sans);
       font-size: 0.8rem;
@@ -1245,7 +1256,7 @@
   <section class="reservations" id="reservations">
     <div class="section-inner fade-in">
       <span class="section-label" data-copy="res.label">Join Us</span>
-      <h2 class="section-heading" data-copy="res.h2">Reserve your table</h2>
+      <h2 class="section-heading" data-copy="res.h2">Restaurant Reservations</h2>
       <p data-copy="res.p1">We offer online reservations through OpenTable for parties up to five. Larger groups of up to ten can be accommodated on weeknight early seatings. We always keep seating back for walk-ins, so if you can't find a reservation, stop by and check with us.</p>
       <p data-copy="res.p2">When making a reservation, please understand that we can't guarantee a specific table or area of the restaurant.</p>
       <a href="https://www.opentable.com/restref/client/?restref=209479&lang=en-US" target="_blank" class="btn btn-primary" data-copy="res.btn1">Book on OpenTable</a>
@@ -1486,9 +1497,9 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
   <script>
   (function(){
-    // Prices are intentionally off the public menu. Flip to true to show them —
-    // the published snapshot already carries them, so no re-publish is needed.
-    var SHOW_PRICES = false;
+    // Prices show on the public menu (turned on 2026-11-25, Dad's ask). They come from the portal's
+    // published menu, so republish from the portal whenever a price changes. Set false to hide them.
+    var SHOW_PRICES = true;   // 2026-11-25: prices on, Dad's ask (the old sample menu had them)
 
     var CFG = {
       apiKey: "AIzaSyByAhPS7C86jXG-8y9EQGNbMwncmBPl9oc",
