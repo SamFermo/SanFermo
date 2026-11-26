@@ -1390,6 +1390,40 @@
   })();
   </script>
 
+  <!-- CLOSURE NOTICE (2026-11-26, Thanksgiving): opens once per visitor on first load, never again on
+       reload (remembered in the browser), and stops showing on its own at NOTICE_UNTIL. For a future
+       closure: change the text, give NOTICE_KEY a new name so everyone sees it once, set NOTICE_UNTIL. -->
+  <dialog class="res-modal" id="noticeModal" aria-labelledby="noticeModalTitle">
+    <button type="button" class="res-modal-close" id="noticeModalClose" aria-label="Close">&times;</button>
+    <h2 class="section-heading" id="noticeModalTitle" data-copy="notice.h2">Closed for Thanksgiving</h2>
+    <p data-copy="notice.p1">We're closed today, Thursday, November 26, so the crew can be home with their families.</p>
+    <p data-copy="notice.p2">We'll be back Friday at 5pm. Happy Thanksgiving.</p>
+    <button type="button" class="btn btn-primary" id="noticeModalOk" data-copy="notice.btn">Got it</button>
+  </dialog>
+  <script>
+  (function () {
+    var NOTICE_KEY = 'sf-notice-thanksgiving-2026';
+    var NOTICE_UNTIL = Date.parse('2026-11-27T11:00:00Z');   // Fri 11/27, 3am Seattle time
+    var d = document.getElementById('noticeModal');
+    if (!d || typeof d.showModal !== 'function' || Date.now() >= NOTICE_UNTIL) return;
+    function seen() {
+      try { return localStorage.getItem(NOTICE_KEY) === '1'; }
+      catch (e) { try { return sessionStorage.getItem(NOTICE_KEY) === '1'; } catch (e2) { return false; } }
+    }
+    function remember() {
+      try { localStorage.setItem(NOTICE_KEY, '1'); }
+      catch (e) { try { sessionStorage.setItem(NOTICE_KEY, '1'); } catch (e2) {} }
+    }
+    if (seen() || document.body.classList.contains('se-on')) return;
+    function close() { if (d.open) d.close(); }
+    document.getElementById('noticeModalClose').addEventListener('click', close);
+    document.getElementById('noticeModalOk').addEventListener('click', close);
+    d.addEventListener('click', function (e) { if (e.target === d) close(); });
+    remember();
+    d.showModal();
+  })();
+  </script>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
